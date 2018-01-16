@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="466.0" maxWidth="559.0" prefHeight="466.0" prefWidth="582.0" styleClass="mainChildContainer" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.config.ConfigOutputsController">
+    <stylesheets>
+        <URL value="@../../styles/configmain.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="14.0" layoutY="11.0" styleClass="heading" text="Outputs">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label disable="true" layoutX="14.0" layoutY="37.0" text="Output Directory" />
+      <TextField fx:id="txtOutDir" disable="true" layoutX="112.0" layoutY="33.0" prefHeight="25.0" prefWidth="348.0" text="output" />
+      <Button disable="true" layoutX="472.0" layoutY="33.0" mnemonicParsing="false" text="Browse" />
+      <Label layoutX="14.0" layoutY="69.0" text="RTL" />
+      <Pane layoutX="112.0" layoutY="65.0" prefHeight="55.0" prefWidth="417.0" styleClass="innerContainer">
+         <children>
+            <CheckBox fx:id="chkVerilog" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#click_rbVerilog" text="Verilog" />
+            <CheckBox fx:id="chkVHDL" layoutX="5.0" layoutY="28.0" mnemonicParsing="false" onAction="#click_ChkVHDL" text="VHDL" />
+            <RadioButton fx:id="rbVerilog1995" disable="true" layoutX="75.0" layoutY="5.0" mnemonicParsing="false" selected="true" text="1995">
+               <toggleGroup>
+                  <ToggleGroup fx:id="verilog" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbVerilog2001" disable="true" layoutX="132.0" layoutY="5.0" mnemonicParsing="false" text="2001" toggleGroup="$verilog" />
+            <CheckBox fx:id="chkRTLWire" layoutX="190.0" layoutY="5.0" mnemonicParsing="false" text="RTL Wire" />
+            <RadioButton fx:id="rbVHDLAlt1" disable="true" layoutX="75.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="alt1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="vhdl" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbVHDLAlt2" disable="true" layoutX="132.0" layoutY="28.0" mnemonicParsing="false" text="alt2" toggleGroup="$vhdl" />
+            <CheckBox fx:id="chkVHDLMultiOutFile" layoutX="295.0" layoutY="28.0" mnemonicParsing="false" text="Multi Out File" />
+         </children>
+      </Pane>
+      <Label layoutX="14.0" layoutY="153.0" text="Verification" />
+      <Pane layoutX="112.0" layoutY="126.0" prefHeight="82.0" prefWidth="417.0" styleClass="innerContainer">
+         <children>
+            <CheckBox fx:id="chkSystemVerilog" layoutX="224.0" layoutY="29.0" mnemonicParsing="false" text="System Verilog" />
+            <CheckBox fx:id="chkOVM" layoutX="224.0" layoutY="5.0" mnemonicParsing="false" text="OVM" />
+            <CheckBox fx:id="chkVMM" layoutX="322.0" layoutY="5.0" mnemonicParsing="false" text="VMM" />
+            <CheckBox fx:id="chkERm" layoutX="5.0" layoutY="54.0" mnemonicParsing="false" text="eRM" />
+            <CheckBox fx:id="chkIVSExcel" layoutX="94.0" layoutY="54.0" mnemonicParsing="false" text="IVS-Excel" />
+            <CheckBox fx:id="chkARVSim" layoutX="224.0" layoutY="55.0" mnemonicParsing="false" text="ARV-Sim" />
+            <CheckBox fx:id="chkARVFormal" layoutX="322.0" layoutY="55.0" mnemonicParsing="false" text="ARV-Formal" />
+            <Pane layoutY="1.0" prefHeight="24.0" prefWidth="209.0" styleClass="innerContainer">
+               <children>
+                  <CheckBox fx:id="chkUVMMultiOutFile" layoutX="93.0" layoutY="3.0" mnemonicParsing="false" text="Multi Out File" />
+                  <CheckBox fx:id="chkUVM" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" onAction="#click_chkUVM" text="UVM" />
+               </children>
+            </Pane>
+            <Pane layoutY="27.0" prefHeight="24.0" prefWidth="209.0" styleClass="innerContainer">
+               <children>
+                  <CheckBox fx:id="chkSystemC" layoutX="5.0" layoutY="3.0" mnemonicParsing="false" onAction="#click_systemc" text="System C" />
+               </children>
+            </Pane>
+            <RadioButton fx:id="rbSyscAlt1" disable="true" layoutX="93.0" layoutY="29.0" mnemonicParsing="false" selected="true" text="alt1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="systemc" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbSyscAlt2" disable="true" layoutX="151.0" layoutY="29.0" mnemonicParsing="false" text="alt2" toggleGroup="$systemc" />
+         </children>
+      </Pane>
+      <Label layoutX="14.0" layoutY="231.0" text="Headers" />
+      <Pane layoutX="112.0" layoutY="214.0" prefHeight="72.0" prefWidth="417.0" styleClass="innerContainer">
+         <children>
+            <CheckBox fx:id="chkC" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#click_chkC" text="C" />
+            <CheckBox fx:id="chkSVHeader" layoutX="322.0" layoutY="5.0" mnemonicParsing="false" text="SV Header" />
+            <CheckBox fx:id="chkCSharp" layoutX="322.0" layoutY="27.0" mnemonicParsing="false" text="CSharp" />
+            <RadioButton fx:id="rbCAlt1" disable="true" layoutX="47.0" layoutY="5.0" mnemonicParsing="false" selected="true" text="alt1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="c" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbCAlt2" disable="true" layoutX="102.0" layoutY="5.0" mnemonicParsing="false" text="alt2" toggleGroup="$c" />
+            <RadioButton fx:id="rbCMisrac" disable="true" layoutX="153.0" layoutY="5.0" mnemonicParsing="false" text="MISRAC" toggleGroup="$c" />
+            <CheckBox fx:id="chkPerl" layoutX="5.0" layoutY="28.0" mnemonicParsing="false" text="Perl" />
+            <CheckBox fx:id="chkPython" layoutX="66.0" layoutY="28.0" mnemonicParsing="false" text="Python" />
+            <CheckBox fx:id="chkCPP" layoutX="153.0" layoutY="28.0" mnemonicParsing="false" text="C++" />
+            <CheckBox fx:id="chkVHeader" layoutX="225.0" layoutY="28.0" mnemonicParsing="false" text="VHeader" />
+            <CheckBox fx:id="chkVHDHeader" layoutX="5.0" layoutY="50.0" mnemonicParsing="false" text="VHD Header" />
+            <CheckBox fx:id="chkCHeaderMultioutfile" layoutX="225.0" layoutY="5.0" mnemonicParsing="false" text="Multi Out File" />
+         </children>
+      </Pane>
+      <Label layoutX="14.0" layoutY="309.0" text="Documentation" />
+      <Pane layoutX="112.0" layoutY="293.0" prefHeight="55.0" prefWidth="417.0" styleClass="innerContainer">
+         <children>
+            <CheckBox fx:id="chkHTML" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#click_chkHTML" text="HTML" />
+            <CheckBox fx:id="chkPDF" layoutX="225.0" layoutY="5.0" mnemonicParsing="false" text="PDF" />
+            <CheckBox fx:id="chkXML" layoutX="322.0" layoutY="5.0" mnemonicParsing="false" text="XML" />
+            <RadioButton fx:id="rbHTMLAlt1" disable="true" layoutX="66.0" layoutY="5.0" mnemonicParsing="false" selected="true" text="alt1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="html" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbHTMLAlt2" disable="true" layoutX="153.0" layoutY="5.0" mnemonicParsing="false" text="alt2" toggleGroup="$html" />
+            <CheckBox fx:id="chkSVG" layoutX="5.0" layoutY="28.0" mnemonicParsing="false" text="SVG" />
+            <CheckBox fx:id="chkDatasheet" layoutX="120.0" layoutY="28.0" mnemonicParsing="false" text="DataSheet" visible="false" />
+            <CheckBox fx:id="chkCustomCSV" layoutX="225.0" layoutY="28.0" mnemonicParsing="false" text="CustomCSV" />
+            <CheckBox fx:id="chkCustomXML" layoutX="322.0" layoutY="28.0" mnemonicParsing="false" text="CustomXML" visible="false" />
+         </children>
+      </Pane>
+      <Label layoutX="14.0" layoutY="359.0" text="Standard" />
+      <Pane layoutX="112.0" layoutY="353.0" prefHeight="55.0" prefWidth="417.0" styleClass="innerContainer">
+         <children>
+            <CheckBox fx:id="chkIPXact" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#click_chkIPXact" text="IP-XACT" />
+            <RadioButton fx:id="rbIPXact15" disable="true" layoutX="79.0" layoutY="5.0" mnemonicParsing="false" selected="true" text="V1.5(IEEE 1685-2009)">
+               <toggleGroup>
+                  <ToggleGroup fx:id="ipxact" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbIPXact14" disable="true" layoutX="224.0" layoutY="5.0" mnemonicParsing="false" text="V1.4" toggleGroup="$ipxact" />
+            <CheckBox fx:id="chkSystemRDL" layoutX="281.0" layoutY="5.0" mnemonicParsing="false" text="System RDL" />
+            <CheckBox fx:id="chkCMSIS" layoutX="5.0" layoutY="28.0" mnemonicParsing="false" text="CMSIS-SVD" />
+         </children>
+      </Pane>
+      <Label layoutX="13.0" layoutY="421.0" text="Sequence" />
+      <Pane layoutX="111.0" layoutY="417.0" prefHeight="32.0" prefWidth="270.0" styleClass="innerContainer">
+         <children>
+            <CheckBox fx:id="chkFirmware" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" text="Firmware" />
+            <CheckBox fx:id="chkSeqUVM" layoutX="79.0" layoutY="5.0" mnemonicParsing="false" text="UVM" />
+         </children>
+      </Pane>
+      <Button layoutX="468.0" layoutY="424.0" mnemonicParsing="false" onAction="#click_clearAll" text="Clear All" />
+      <Button layoutX="395.0" layoutY="424.0" mnemonicParsing="false" onAction="#click_selectAll" text="Select All" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="anchrPaneContainer" prefHeight="362.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.ErrorWindowController">
+    <stylesheets>
+        <URL value="@../styles/errorwindow.css" />
+    </stylesheets>
+   <children>
+      <ScrollPane fx:id="scrollpaneContainer" layoutX="500.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

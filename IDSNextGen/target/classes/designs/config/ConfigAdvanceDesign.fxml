@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainChildContainer" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.config.ConfigAdvanceDesignController">
+    <stylesheets>
+        <URL value="@../../styles/configmain.css" />
+    </stylesheets>
+    <children>
+      <Label fx:id="lblGeneral" layoutX="24.0" layoutY="14.0" styleClass="heading" text="Advance Design">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <CheckBox fx:id="chkMemoryMapping" layoutX="79.0" layoutY="74.0" mnemonicParsing="false" text="Memory technology mapping" />
+      <CheckBox fx:id="chkOptimizeLow" layoutX="79.0" layoutY="103.0" mnemonicParsing="false" text="Optimize for low power" />
+      
+   </children>
+</AnchorPane>

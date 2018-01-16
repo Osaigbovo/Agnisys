@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.config.ConfigMainController">
+    <stylesheets>
+        <URL value="@../../styles/configmain.css" />
+    </stylesheets>
+   <center>
+      <Pane fx:id="paneMainContainer" prefHeight="467.0" prefWidth="522.0" styleClass="pane" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <Pane fx:id="paneRight" prefHeight="467.0" prefWidth="157.0" styleClass="pane" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink fx:id="hypLnkGeneral" layoutX="7.0" layoutY="20.0" onAction="#click_hypLink1" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkOutPut" layoutX="7.0" layoutY="50.0" onAction="#click_hypLink2" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkUserDefined" disable="true" layoutX="23.0" layoutY="80.0" onAction="#click_hypLnkUserDefine" text="User Defined Outputs" />
+            <Hyperlink fx:id="hypLnkSettings" layoutX="7.0" layoutY="110.0" onAction="#click_hypLnkSettings" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkVariants" disable="true" layoutX="23.0" layoutY="140.0" onAction="#click_hypLnkVariants" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkFormating" disable="true" layoutX="23.0" layoutY="170.0" onAction="#click_hypLnkFormating" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkDataSheet" disable="true" layoutX="23.0" layoutY="200.0" onAction="#click_hypLnkDatasheet" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkCustomCSV" disable="true" layoutX="23.0" layoutY="230.0" onAction="#click_hypLnkCustomCSV" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkAdvanceVerification" layoutX="7.0" layoutY="290.0" onAction="#click_hypLnkAdvanceVerification" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkAdvanceDesign" layoutX="7.0" layoutY="320.0" onAction="#click_hypLnkAdvanceDesign" text="Hyperlink" />
+            <Hyperlink fx:id="hypLnkTemplate" layoutX="23.0" layoutY="260.0" onAction="#click_hypLnkTemplate" text="Template" visible="false" />
+         </children>
+      </Pane>
+   </left>
+   <top>
+      <Pane fx:id="paneTop" prefHeight="34.0" prefWidth="700.0" styleClass="pane" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblConfigMainHeader" layoutX="14.0" layoutY="6.0" text="Label" />
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane fx:id="paneBottom" prefHeight="99.0" prefWidth="700.0" styleClass="pane" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnCancel" layoutX="643.0" layoutY="66.0" mnemonicParsing="false" onAction="#closeButtonAction" text="Button" />
+            <Button fx:id="btnOk" layoutX="604.0" layoutY="66.0" mnemonicParsing="false" onAction="#click_saveConifig" text="ok" />
+            <TextArea layoutX="7.0" layoutY="7.0" prefHeight="56.0" prefWidth="688.0" styleClass="txtArea" />
+         </children></Pane>
+   </bottom>
+</BorderPane>

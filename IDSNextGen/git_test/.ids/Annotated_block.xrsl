@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<block heading="1" child_no="1" name="block_name" id="2:2"
+       oid="5ac5695f-9cf2-4b02-84d2-20dda83abe37"
+       uid="2017-12-06T15:48:44.101+05:30d15e1"
+       keypath="block_name"
+       offset="0"
+       caddress="0"
+       hwmapaddr="3"
+       csize="8"
+       address="0x0"
+       endaddress="0x7"
+       size="8">
+   <config>
+      <regwidth>32</regwidth>
+      <buswidth>32</buswidth>
+      <addressunit>8</addressunit>
+      <variants>
+         <variant name="none" isselected="true">
+            <doc>'none' variant states including all templates which are not assigned any variant property.</doc>
+         </variant>
+      </variants>
+      <busdomains>
+         <busdomain name="default_map" bus="AMBA" addressUnit="8" offset="0" address="0x0"
+                    endaddress="0x7"
+                    size="8"/>
+      </busdomains>
+   </config>
+   <reg heading="1.1" child_no="1" name="reg_name" id="3:2"
+        oid="2f691dac-968e-4624-b325-e65129c233de"
+        uid="2017-12-06T15:48:44.101+05:30d15e13"
+        keypath="block_name.reg_name,reg_name"
+        hwmapaddr="4"
+        csize="4"
+        offset="0"
+        caddress="0"
+        address="0x0"
+        endaddress="0x3"
+        size="4"
+        default="0x00000000"
+        sw="rw"
+        hw="rw">
+      <config>
+         <regwidth>32</regwidth>
+         <busdomains>
+            <busdomain name="default_map" bus="AMBA" addressUnit="8" offset="0" address="0x0"
+                       endaddress="0x3"
+                       size="4"/>
+         </busdomains>
+      </config>
+      <field offset="1" name="F" id="3:7" uid="2017-12-06T15:48:44.101+05:30d15e17"
+             keypath="block_name.reg_name.F,reg_name.F,F">
+         <sw>rw</sw>
+         <hw>rw</hw>
+         <default unresolvedDef="0">0</default>
+      </field>
+   </reg>
+   <reg heading="1.2" child_no="2" name="reg_name2" id="4:2"
+        oid="04226810-f118-4956-b1cc-12335010d46a"
+        uid="2017-12-06T15:48:44.101+05:30d15e24"
+        keypath="block_name.reg_name2,reg_name2"
+        hwmapaddr="5"
+        csize="4"
+        offset="4"
+        caddress="4"
+        address="0x4"
+        endaddress="0x7"
+        size="4"
+        default="0x00000000"
+        sw="ro"
+        hw="ro">
+      <config>
+         <regwidth>32</regwidth>
+         <busdomains>
+            <busdomain name="default_map" bus="AMBA" addressUnit="8" offset="4" address="0x4"
+                       endaddress="0x7"
+                       size="4"/>
+         </busdomains>
+      </config>
+      <field offset="3" name="F2" id="4:7" uid="2017-12-06T15:48:44.101+05:30d15e28"
+             keypath="block_name.reg_name2.F2,reg_name2.F2,F2">
+         <sw>ro</sw>
+         <hw>ro</hw>
+         <default unresolvedDef="0">0</default>
+      </field>
+   </reg>
+</block>

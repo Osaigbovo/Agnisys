@@ -1,0 +1,47 @@
+.dropDownBitSize{
+	width: 100%;
+	font-size: 11px;	
+}
+.idsTemp{
+	//background-color:red;
+}
+.splitVer{
+	height: 10px;
+	font-size: 9px;
+}
+.setBorder{
+	border-bottom: 1px solid grey;
+}
+input{
+	border: none;
+	font-size: 12px;
+	width: 100%;
+	height: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	margin-left: 100px;	
+	font-family: serif;
+	font-size: 12px;
+	text-align: center;
+	word-wrap: break-word;
+	table-layout: fixed; 
+
+}
+
+td{
+	height: 15px;
+}
+
+table, th, td {
+		border: 1px solid grey;
+		word-wrap: break-word;
+}			
+.bits{
+	width: 80px;
+}
+.border{
+	background-color: #6791B0;
+	height: 4px;
+}

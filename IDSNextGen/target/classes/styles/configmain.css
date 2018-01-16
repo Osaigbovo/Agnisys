@@ -1,0 +1,26 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    //-fx-background-color:red;
+}
+
+.pane , .txtArea{
+    -fx-border-color:grey;
+}
+
+.mainChildContainer{
+    -fx-pref-height:452;
+    -fx-pref-width:559;
+    
+}
+
+.innerContainer{
+    -fx-border-color:grey;
+    -fx-border-width:0.5;
+}
+
+.heading{
+    -fx-font-weight:bold;
+}

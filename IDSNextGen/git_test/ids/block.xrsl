@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<block name="block_name" id="2:2" oid="5ac5695f-9cf2-4b02-84d2-20dda83abe37">
+    <config>
+        <regwidth>32</regwidth>
+        <buswidth>32</buswidth>
+        <addressunit>8</addressunit>
+        <variants>
+            <variant name="none" isselected="true">
+                <doc>'none' variant states including all templates which are not assigned any
+                    variant property.</doc>
+            </variant>
+        </variants>
+    </config>
+    <reg name="reg_name" id="3:2" oid="2f691dac-968e-4624-b325-e65129c233de">
+        <config>
+            <regwidth>32</regwidth>
+        </config>
+        <field offset="1" name="F" id="3:7">
+            <sw>rw</sw>
+            <hw>rw</hw>
+            <default>0</default>
+        </field>
+    </reg>
+    <reg name="reg_name2" id="4:2" oid="04226810-f118-4956-b1cc-12335010d46a">
+        <config>
+            <regwidth>32</regwidth>
+        </config>
+        <field offset="3" name="F2" id="4:7">
+            <sw>ro</sw>
+            <hw>ro</hw>
+            <default>4</default>
+        </field>
+    </reg>
+</block>

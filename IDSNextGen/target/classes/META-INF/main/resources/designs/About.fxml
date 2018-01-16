@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="446.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.AboutController">
+    <stylesheets>
+        <URL value="@/styles/about.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutY="1.0" prefHeight="114.0" prefWidth="446.0">
+         <children>
+            <Label fx:id="lblAbout" layoutX="7.0" layoutY="6.0" prefHeight="102.0" prefWidth="434.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="27.0" layoutY="142.0" prefHeight="229.0" prefWidth="393.0" styleClass="panelic">
+         <children>
+            <Label layoutX="15.0" layoutY="83.0" text="License expire in : " />
+            <Label layoutX="16.0" layoutY="49.0" text="Version : " />
+            <Label fx:id="lblVersion" layoutX="116.0" layoutY="49.0" text="Label" />
+            <Label fx:id="lblLicense" layoutX="116.0" layoutY="83.0" text="Label" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

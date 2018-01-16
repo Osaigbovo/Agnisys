@@ -1,0 +1,10 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color:#5C7EC4;
+}
+.panelic{
+    -fx-background-color:orange;
+}

@@ -1,0 +1,217 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.button{
+    -fx-font-size:9;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 18px;
+    -fx-pref-width:25;
+    //-fx-pref-width:66;
+    
+    //-fx-background-color: transparent;
+}
+.button:hover 
+{
+  -fx-background-color: #5C7EC4;
+}
+
+
+#btnSearch{
+  -fx-background-image: url("../images/search.png");  
+  -fx-background-size: 20px;
+}
+#btnDelTab{
+  -fx-background-image: url("../images/text_delete.png");  
+  -fx-background-size: 20px;
+}
+#btnPrint{
+    -fx-background-image: url("../images/print.png");  
+}
+#btnCopyTab{
+  -fx-background-image: url("../images/text_copy.png");  
+}
+#btnCutTab{
+  -fx-background-image: url("../images/text_cut.png");  
+}
+#btnPasteTab{
+  -fx-background-image: url("../images/text_paste.png");  
+}
+
+#btnInsertImg{
+  -fx-background-image: url("../images/txt_insert_img.png");  
+  -fx-background-size: 20px;
+}
+
+#btnIncreaseFont{
+    -fx-background-image: url("../images/text_increase_size.png");
+    -fx-background-size: 16px;
+}
+
+#btnDescreaseFont{
+    -fx-background-image: url("../images/text_decrease_size.png");
+    -fx-background-size: 16px;
+}
+
+#btnBold{
+    -fx-background-image: url("../images/text_bold.png");
+    -fx-background-size: 18px;
+}
+#btnItalic{
+    -fx-background-image: url("../images/text_italic.png");
+}
+#btnUnderline{
+    -fx-background-image: url("../images/text_underline.png");
+}
+
+#btnStrikeThrough{
+    -fx-background-image: url("../images/text_strike_through.png");
+    -fx-background-size: 16px;
+}
+
+#btnSubScript{
+    -fx-background-image: url("../images/text_sub_script.png");
+}
+
+#btnSuperScript{
+    -fx-background-image: url("../images/text_super_script.png");
+}
+
+#btnAlignCenter{
+    -fx-background-image: url("../images/text_align_center.png");
+    -fx-background-size: 16px;
+}
+#btnAlignLeft{
+    -fx-background-image: url("../images/text_align_left.png");
+}
+#btnAlignRight{
+    -fx-background-image: url("../images/text_align_right.png");
+    -fx-background-size: 16px;
+}
+#btnAlignFull{
+    -fx-background-image: url("../images/text_align_full.png");
+    -fx-background-size: 16px;
+}
+
+#btnOrderedList{
+    -fx-background-image: url("../images/text_list_ordered.png");  
+    -fx-background-size: 18px;
+}
+#btnUnOrderedList{
+    -fx-background-image: url("../images/text_list_unordered.png");  
+    -fx-background-size: 18px;
+}
+#separat1{
+
+}
+#btnConfig{
+    -fx-background-image: url("../images/ids16.png");
+    -fx-pref-width:62;
+}
+
+#btnOutDir{
+    -fx-background-image: url("../images/outDir.png");
+    -fx-pref-width:62;
+}
+#btnSystem{
+    -fx-background-image: url("../images/system16.png");
+    -fx-pref-width:50;
+}
+#btnBoard{
+    -fx-background-image: url("../images/board16.png");
+    -fx-pref-width:50;
+}
+#btnChip{
+    -fx-background-image: url("../images/chip16.png");
+    -fx-pref-width:45;
+}
+#btnBlock{
+    -fx-background-image: url("../images/block16.png");
+    -fx-pref-width:45;
+}
+#btnRegGrp{
+    -fx-background-image: url("../images/reg_group16.png");
+    -fx-pref-width:64;
+}
+#btnRegister{
+    -fx-background-image: url("../images/reg16.png");
+    -fx-pref-width:64;
+}
+#btnTrigBuf{
+    -fx-background-image: url("../images/triggerBuffer_reg.png");
+    -fx-pref-width:52;
+}
+#btnToC{
+    -fx-background-image: url("../images/Toc16.png");
+    -fx-pref-width:52;
+}
+#btnRef{
+    -fx-background-image: url("../images/ref.png");
+    -fx-pref-width:56;
+}
+#btnMemory{
+    -fx-background-image: url("../images/mem16.png");
+    -fx-pref-width:56;
+}
+#btnEnum{
+    -fx-background-image: url("../images/enum16.png");
+    -fx-pref-width:50;
+}
+#btnDefine{
+    -fx-background-image: url("../images/define.png");
+    -fx-pref-width:50;
+}
+#btnVarient{
+    -fx-background-image: url("../images/varient16.png");
+    -fx-pref-width:52;
+}
+#btnImport{
+    -fx-background-image: url("../images/IMPORT_26.png");
+    -fx-pref-width:60;
+}
+#btnHier{
+    //-fx-background-image: url("../images/i.png");
+    -fx-pref-width:60;
+}
+#btnMarkBit{
+    -fx-background-image: url("../images/mark_bits16.png");
+    -fx-pref-width:62;
+}
+
+#btnSequ{
+    -fx-background-image: url("../images/sequence_16x16.jpg");
+    -fx-pref-width:62;
+}
+#btnBusDomain{
+    //-fx-background-image: url("../images/i.png");
+}
+#btnSignal{
+    -fx-background-image: url("../images/signals.png");
+}
+#btnCheck{
+    -fx-background-image: url("../images/check26.png");
+    -fx-background-position: top;
+    -fx-pref-height:50;
+    -fx-pref-width:40;
+}
+#btnGenerate{
+    -fx-background-image: url("../images/generate26.png");
+    -fx-background-position: top;
+    -fx-pref-height:50;
+    -fx-pref-width:52;
+}
+#btnTurbo{
+    //-fx-background-image: url("../images/i.png");
+    -fx-background-position: top;
+    -fx-pref-height:50;
+    -fx-pref-width:40;
+}
+
+.tooltip{
+    -fx-font-size:10;
+}

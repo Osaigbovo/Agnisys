@@ -1,0 +1,133 @@
+
+.IDStext-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.IDStext-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.IDStext-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.IDStext-area:focused {
+    -fx-highlight-fill: #7ecfff;
+}
+
+.IDStext-area .content {
+    -fx-padding: 10px;
+    -fx-text-fill: gray;
+    -fx-highlight-fill: #7ecfff;
+}
+
+
+.dropDownBitSize{
+	width: 100%;
+	font-size: 11px;	
+}
+.idsTemp{
+	//background-color:red;
+}
+.splitVer{
+	height: 10px;
+	font-size: 9px;
+}
+.setBorder{
+	border-bottom: 1px solid grey;
+}
+input{
+	border: none;
+	font-size: 12px;
+	width: 100%;
+	height: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	margin-left: 100px;	
+	font-family: serif;
+	font-size: 12px;
+	text-align: center;
+	word-wrap: break-word;
+	table-layout: fixed; 
+
+}
+
+td{
+	height: 15px;
+}
+
+table, th, td {
+		border: 1px solid grey;
+		word-wrap: break-word;
+}			
+.bits{
+	width: 80px;
+}
+.border{
+	background-color: #6791B0;
+	height: 4px;
+}
+
+
+
+
+
+
+/*
+ * Empty Stylesheet file.
+ */
+
+.treeview{
+    -fx-font-size:4
+}
+
+.mainFxmlClass {
+    -fx-background-color:window;
+}
+
+.toolbar-button{
+    -fx-pref-height:40;
+}
+
+.panl{
+    -fx-border-color:blue;
+}
+
+.heading{
+    -fx-font-size:14;
+    /*-fx-background-color: #C6D2FB;*/
+}
+
+#btnToolBarOpenProject{
+   -fx-background-image: url("../images/folder_24.png");
+   -fx-background-size: cover;
+}
+#btnToolBarSystem{
+   -fx-background-image: url("../images/system16.png");  
+}
+
+#btnToolBarBoard{
+   -fx-background-image: url("../images/board16.png");
+}
+
+#btnToolBarChip{
+   -fx-background-image: url("../images/chip16.png");
+}
+
+#btnToolBarBlock{
+   -fx-background-image: url("../images/block16.png");
+}
+
+#btnToolBarReg{
+   -fx-background-image: url("../images/reg16.png");
+}
+
+.toolbar-editor-btn{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width:28;
+    -fx-font-size:10;
+}

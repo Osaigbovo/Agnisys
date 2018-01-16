@@ -1,0 +1,38 @@
+
+/*-----------------------------------         Starts  HTML        --------------------------*/
+
+h1{font-size: 30px;font-family: arial;color:Navy;text-align:center;}
+
+.body_html_one{margin-top: 2px; margin-right: 10px; margin-bottom: 10px; margin-left: 30px;}
+
+.index_table{table-layout:auto;border-collapse:collapse;border-style:solid;border:solid;border-width:thin;border-color:#778899;width:60%}
+
+.index{font-size: 20px;font-family: arial;background-color:#EEEEEE;color:black}
+
+.index_attribute{font-size: 15px;font-family: arial;background-color:#DCDCDC; color:#292351; text-align:center}
+       
+.indexvalue{font-size: 14px;font-family: arial;color:black;font-style:normal}
+
+.classtd{font-size:12px;}
+       
+.pallete{font-size: 20px;font-family: arial;background-color:#EEEEEE; color:#292351; width:96%}
+
+.subindex{font-size: 16px;font-family: arial;background-color:#EEEEEE; color:#292351; width:96%}
+
+.register_table{table-layout:auto;border-collapse:collapse;border-style:solid;border:solid;border-width:thin;border-color:#778899;margin-left:8%;width:88%;}
+
+.register_table_reggroup{table-layout:auto;border-collapse:collapse;border-style:solid;border:solid;border-width:thin;border-color:#778899;margin-left:0;width:96%;}
+
+.count_table{table-layout:auto;border-collapse:collapse;border-style:solid;border:solid;border-width:thin;border-color:#778899;margin-left:0;}
+
+.registerindex{font-size: 15px;font-family: arial;background-color:#EEEEEE; color:#292351}
+
+.registerindex1{font-size: 14px;font-family: arial;background-color:#EEEEEE; color:#292351; width:auto}
+
+.table_value{font-size: 15px;font-family: arial;color:black;font-style:normal}
+
+.table_value1{font-size: 12px;font-family: arial;color:black;font-style:normal}
+
+.doc_table{font-size: 14px;font-family: arial;background-color:#EEEEEE;color:black}
+
+/*--------------------------------------         Ends HTML       --------------------------*/
