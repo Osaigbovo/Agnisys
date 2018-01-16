@@ -539,13 +539,10 @@ public class IDSToolbarController implements Initializable {
     @FXML
     private void insertSignals() {
 //        imageString = ImageConvertor.getImageConvertor().getImageString(SIGNAL_IMG_PATH);
-        System.out.println("--insert signal call");
         imageString = "iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABsklEQVQ4T6WSvUsCYRzHv2W+kJE0KBkE1lCEa7T2LwQuuQjREEIIjZVt4eLeYGA4GBW0ObgVQqBmDYIv6SChFRroXVpXnfjrnqfr5XBo6AM/7p7vfe/7/J6XAVKASvNZxr3whtnxYeh1g6r6Nyyi2+1Cr9dDE7ifuMPp9SN2l6Yx7xjlmtvtRjab5WaGLMuQJAmpVApWqxWtVgvpdBq5XA4+n+8nUJC6WD0owDA0iIWpUczNTGLDtYjiVYIH/aZaraLT6cBsNiMWiyEcDsPhcCAajfJ2qf70xh50ftOk/H2bv29u77CJNGWxWKhYLJKyPFK65L5CoUDxeJzK5TIfo9l5p2D8lvbOalxgnBwf9YWxSiaTqoNIFEUKBAKkdKcqnwytH5bw8t5TljqACesY8hcxbK0tK/9rsdvtaDQaCIVC0Ol0UDpCJpOB0+nkus1m+zReVkRaOchTWyYSXolMwyN9nQWDQT57vV7nJQgC+f1+8ng8VCqV+Lcv0Ov1KPcgUVts9QWx8nq9qlVLpVKhWu1nm774PuVIJAKj0QiTycSGHHY9XC4XDAaDqvyN5h7+H+AD3W9Zy3A0RZQAAAAASUVORK5CYII=";
         if (ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine() == null) {
-            System.out.println("getActive engine not null");
             ApplicationMainGUIController.APPLICATION_OBJECT.printConsole("Error : Please select idsng file to insert IDS Specs");
         } else {
-            System.out.println("active engine is null");
             ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("insertSignals('data:image/png;base64," + imageString + "')");
             WebController.setUnsaveSymbol();
         }

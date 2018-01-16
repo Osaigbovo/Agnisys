@@ -613,10 +613,9 @@ function insertBusDomain(){
 }
 
 function insertSignals(imgPath){
-	alert("insert signals");
 	addIntoHistory();
 	random_Num=Math.random();
-	query="<table class='signals idsTemp' contenteditable='false' onclick='tabClick(this)' id='tab_bus"+random_Num+"'><tbody><tr><td class='header readOnly'>qqq</td><td title='signal name' class='name'>signal_name</td><td class='specImage'><img title='signals' alt='signals' src="+imgPath+"></td><td class='addCell readOnly'></td></tr><tr><td colspan='4' class='border'></td></tr><tr ><td class='label'>name</td><td class='label'>port type</td><td colspan='2' class='label'>description</td></tr><tr onclick='setCurrRow(this);' onkeydown='setCurrRow(this);' class='edited'><td class='name'></td><td class='direction'></td><td colspan='2' title='add description here' class='desc signaldesc' onkeydown='insertNewRowSignals(event,this);'></td></td></tbody> </table><br>";
+	query="<table class='signals idsTemp' contenteditable='false' onclick='tabClick(this)' id='tab_bus"+random_Num+"'><tbody><tr><td class='header readOnly'></td><td title='signal name' class='name'>signal_name</td><td class='specImage'><img title='signals' alt='signals' src="+imgPath+"></td><td class='addCell readOnly'></td></tr><tr><td colspan='4' class='border'></td></tr><tr ><td class='label'>name</td><td class='label'>port type</td><td colspan='2' class='label'>description</td></tr><tr onclick='setCurrRow(this);' onkeydown='setCurrRow(this);' class='edited'><td class='name'></td><td class='direction'></td><td colspan='2' title='add description here' class='desc signaldesc' onkeydown='insertNewRowSignals(event,this);'></td></td></tbody> </table><br>";
 	pasteHtmlAtCaret(query);
 }
 
@@ -627,14 +626,9 @@ function reloadPage(){
 function pasteHtmlAtCaret( html ) {
 	addIntoHistory();
 	var sel, range;
-	alert("paste caret");
 	if ( window.getSelection ) {
-			alert("inside selection");
-
 		sel = window.getSelection();
 		if ( sel.getRangeAt && sel.rangeCount ) {
-						alert("inside rangeCount");
-
 			range = sel.getRangeAt( 0 );
 			range.deleteContents();
 
@@ -657,9 +651,6 @@ function pasteHtmlAtCaret( html ) {
 			}
 		}
 	} else if ( document.selection && document.selection.type != "Control" ) {
-					alert("inside control");
-
-		
 		document.selection.createRange().pasteHTML( html );
 	}
 }
