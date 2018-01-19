@@ -173,7 +173,8 @@
       <Separator fx:id="separat1111" layoutX="508.0" layoutY="3.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="7.0" />
       <Separator fx:id="separat11111" layoutX="628.0" layoutY="3.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="7.0" />
       <ComboBox fx:id="ddReg" layoutX="187.0" layoutY="34.0" minHeight="10.0" minWidth="10.0" prefHeight="15.0" prefWidth="18.0" />
-      <Button layoutX="659.0" layoutY="15.0" mnemonicParsing="false" onAction="#click_testGit" text="Import Param" />
+      <Button layoutX="651.0" layoutY="7.0" mnemonicParsing="false" onAction="#click_testGit" text="Import Param" />
+      <Button layoutX="652.0" layoutY="28.0" mnemonicParsing="false" onAction="#click_UpdateParam" text="Update Param" />
       <!--
       <Button fx:id="btnAutoTest" alignment="CENTER_RIGHT" contentDisplay="BOTTOM" disable="true" layoutX="868.0" layoutY="5.0" mnemonicParsing="false" onAction="#insertAutoTest" prefHeight="22.0" prefWidth="60.0" text="Auto Test" textAlignment="RIGHT">
          <tooltip>

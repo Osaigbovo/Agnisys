@@ -173,6 +173,14 @@ public class IDSToolbarController implements Initializable {
     }
 
     @FXML
+    private void click_UpdateParam() {
+        System.out.println("testGit start");
+
+        ParamWriter param = new ParamWriter();
+        param.updateParam();
+    }
+
+    @FXML
     private void click_testGit() {
         System.out.println("testGit start");
 

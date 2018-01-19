@@ -79,6 +79,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
@@ -105,6 +106,11 @@ import us.agnisys.idsbatch.Transformer;
 public class ApplicationMainGUIController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="fxml var init">
+    @FXML
+    public VBox vboxhelp;
+
+    @FXML
+    public Pane pnhelp;
     @FXML
     BorderPane borderPaneMain;
     @FXML
@@ -1311,6 +1317,21 @@ public class ApplicationMainGUIController implements Initializable {
     //<editor-fold defaultstate="collapsed" desc="click_graphicalViewBtn">
     @FXML
     private void click_btnGraphicalView(ActionEvent event) {
+        double temp = 0;
+        //splitPnEditorView.setDividerPosition(1, 0.20);
+        splitPaneRight.setDividerPosition(0, 1.0);
+        double va = splitView.getDividerPositions()[1];
+        if (splitView.getDividerPositions()[1] < 0.98) {
+            splitView.setDividerPosition(1, 1.0);
+        } else {
+            splitView.setDividerPosition(1, 0.8);
+        }
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="click_graphicalViewBtn">
+    @FXML
+    private void click_btnGraphicalView2(ActionEvent event) {
         double temp = 0;
         if (splitView.getDividerPositions()[1] < 0.98) {
             //right pane is visible
