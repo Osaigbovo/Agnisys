@@ -25,7 +25,6 @@ import javafx.scene.control.Tooltip;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import us.agnisys.idsbatch.Transformer;
 
 /**
@@ -36,6 +35,73 @@ public class ParamWriter {
 
     HashMap<Parameters, Parameters> paramDiff = null;
     Document htmldoc = null;
+
+    public void onRegisterView() {
+        System.out.println("--call param writer");
+        String str = "";
+        String htmlContents = Transformer.readFileAsString(IDSUtils.getActiveOrgFilePath());
+        htmldoc = Jsoup.parse(htmlContents);
+
+        Element paramdiv = htmldoc.getElementById("paramcontainer");
+        List groups = paramdiv.getElementsByTag("table");
+
+        for (Object group : groups) {
+
+            Element tab = ((Element) group);
+            System.out.println("--class name=" + tab.attr("class"));
+            String tabcls = tab.attr("class");
+            switch (tabcls) {
+                case "reggroup":
+                    if (str.equals("")) {
+                        str += insertreggroup(tab);
+                    } else {
+                        str += "<table class=\"endreggroup idsTemp\" id=\"tab1\"><tbody><tr class=\"label\"><td>End RegGroup</td></tbody></table> <br>" + insertreggroup(tab);
+                    }
+                    break;
+
+                case "regcontainer":
+                    str += insertReg(tab);
+                    break;
+            }
+        }
+        str += "<table class=\"endreggroup idsTemp\" id=\"tab1\"><tbody><tr class=\"label\"><td>End RegGroup</td></tbody></table> <br>";
+//        ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("regviewupdate('" + str + "')");
+        ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("regviewupdate('" + str + "')");
+
+    }
+
+    private String insertReg(Element ele) {
+        //read reg here
+        String name = ele.attr("data-name");
+        String offset = ele.attr("data-offset");
+        String desc = ele.attr("data-desc");
+        String prop = ele.attr("data-prop");
+
+        //read filed here
+        String fieldstr;
+        List fieldsele = ele.getElementsByClass("dragtarget");
+        String row = "";
+
+        for (Object field : fieldsele) {
+            Element f = (Element) field;
+            row += "<tr onkeyup=\"setCurrRow(this);\" onclick=\"setCurrRow(this);\" class=\"field edited\"><td class=\"bits\">" + f.attr("data-size") + "</td><td class=\"fieldname\" >" + f.attr("data-name") + "</td><td class=\"sw\">" + f.attr("data-sw") + "</td><td class=\"hw\">" + f.attr("data-hw") + "</td><td class=\"default\">" + f.attr("data-default") + "</td><td class=\"desc fielddesc\" onkeydown=\"insertNewRow(event,this);\">" + f.attr("data-desc") + "</td></tr>";
+        }
+        fieldstr = "<table class=\"fields idsTemp\" id=\"tab_reg_field" + name + "\"><tr class=\"label\"><td class=\"ddregbits\">bits</td><td class=\"lblfieldname\">name</td><td class=\"lblsw\">s/w</td><td class=\"lblhw\">h/w</td><td class=\"lbldefault\">default</td><td class=\"lbldesc\">description</td></tr>" + row + "</table>";
+
+        String imgPath = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVHja1JNdUoMwEMc3gM744EX0CF6iXsZXPY9Tq97Gj1ptRynfpKVQCCHbTWhLeebJzCSzf0h+5L+7MESEIcOCgWMwwLm+fRjm4WZ0h49fJY6nGU6mKV6N7vH1k+PzR4yT98Dopzef4ohmYvTL9xrHs62JHQ3JgwRUnYNqKgMNeQyIDSAooyOeAGM2RbbR8eIP7PPL1oJeZpEHFlaUEGkeLn7XdIAOs9ad6xWknT2EdJZADXkHWLqCvl6DUi1gHnDazI42f4IcdLkPJZ8tKrBtuwNEYQxKCsCmBQgvA3aSJ+FnPUDsx8CcbQdIVyVZaGi2nuc5gU4abL6p4bThio0EaVUdIOQFWErRbDeJlderVL1a9gBhWoJg0tzSAGRVwJn2vPe9SeCYA71mnB0vpJ2jEiZfOnZSuABn7YJ+Lw/tWfv9di2XPS25uy+oLtS//5l2AgwAgHLTw4hIPJYAAAAASUVORK5CYII";
+        String reg = "<table contenteditable=\"false\" onclick=\"tabClick(this);\" class=\"reg idsTemp\" id=\"tab_reg" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td title=\"reg name\" class=\"name\">" + name + "</td><td title=\"offset\" class=\"offset\" colspan=\"2\">" + offset + "</td><td class=\"specImage\"><img title=\"Register\" alt=\"Register\" src=" + imgPath + "></td><td class=\"address addCell readOnly\" ><div class=\"splitVer setBorder\" title=\"address\"><label class=\"label\">address|</label><label class=\"addrvalue\"></label></div><div class=\"splitVer\" title=\"Default\"><label class=\"label\">default |</label><label class=\"defvalue\"></label></div> </td> <td class=\"regwidth hideWidth\">32</td></tr><tr><td colspan=\"6\" title=\"add properties\" class=\"propclass\" contenteditable=\"true\">" + prop + "</td></tr><tr><td colspan=\"6\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr><tr><td colspan=\"6\" class=\"border\"></td></tr><tr><td colspan=\"6\" class=\"fieldtd\">" + fieldstr + "</td></tr></tbody></table><br>";
+        return reg;
+    }
+
+    private String insertreggroup(Element ele) {
+        String name = ele.attr("data-name");
+        String offset = ele.attr("data-offset");
+        String desc = ele.attr("data-desc");
+        String prop = ele.attr("data-prop");
+        String imgPath = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABkSURBVHjaYvz//z8DJYBFOqSVIhNYQMTkugwUwdymGShiyHx0NhMDhYBRKriFci+snFjO8PX7T4akiglYnYrPa2AvsLCwMLAwMw+gF3CF+BCKBUKhjc87FHth4MOAkdLsDBBgAAAIP+g8PM01AAAAAElFTkSuQmCC";
+        String reggroup = "<br><table contenteditable=\"false\" class=\"section idsTemp\" onclick=\"tabClick(this)\" id=\"tab_section" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td class=\"name\" title=\"reg group name\">" + name + "</td><td title=\"offset\" class=\"offset\">" + offset + "</td><td class=\"specImage\"><img title=\"RegGroup\" alt=\"RegGrou[]\" src=" + imgPath + "></td><td class=\"address addCell readOnly\"><label class=\"label\">address|</label><label class=\"addrvalue\" title=\"address\"></label></td></tr><tr><td colspan=\"5\" title=\"add properties\"  class=\"propclass\">" + prop + "</td></tr><tr><td colspan=\"5\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr></tbody> </table><br>";
+        return reggroup;
+    }
 
     public void updateParam() {
         ApplicationMainGUIController.APPLICATION_OBJECT.vboxhelp.getChildren().clear();
@@ -56,7 +122,7 @@ public class ParamWriter {
                 Parameters p = (Parameters) me.getKey();
                 if (p.getField().trim().equals(ele.attr("title").trim())) {
 
-                    System.out.println("--matching attr=" + ele.attr("title"));
+                    //System.out.println("--matching attr=" + ele.attr("title"));
                     ele.parent().attr("style", "background-color:white");
                     int colspan = Integer.parseInt(ele.parent().attr("colspan"));
                     for (int j = 1; j < colspan; j++) {
@@ -145,7 +211,7 @@ public class ParamWriter {
                                             deletedcell.add(j);
                                             //insert field here
                                             Element insertField = ((Element) fieldcells.get((int) deletedcell.get(0)));
-                                            insertField.html("<p draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p>");
+                                            insertField.html("<p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\"  draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p>");
                                             insertField.attr("style", "background-color: #d4e0e2;");
                                             insertField.attr("colspan", String.valueOf(size));
 
@@ -176,7 +242,7 @@ public class ParamWriter {
                                 Element field = (Element) fieldcells.get(j);
                                 if (!field.hasText()) {
 
-                                    field.html("<p draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p>");
+                                    field.html("<p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p>");
                                     field.attr("style", "background-color: #d4e0e2;");
                                     isFound = false;
                                     needinsertreg = false;
@@ -198,7 +264,7 @@ public class ParamWriter {
                         boolean isgroupneed = false;
                         Element ele3 = null;
                         if (tabs.size() < 1) {
-                            ele3 = htmldoc2.getElementById("paramcontainer").append("<table class=\"reggroup\"><tr><td></td></tr></table><br><br><table class=\"reggroup\"><tr><td>" + currparam.getType() + "</td></tr></table><br>");
+                            ele3 = htmldoc2.getElementById("paramcontainer").append("<br><br><table data-name=\"" + currparam.getType() + "\" class=\"reggroup\"><tr><td>" + currparam.getType() + "</td></tr></table>");
                             isgroupneed = true;
 
                         } else {
@@ -213,7 +279,7 @@ public class ParamWriter {
                         String row2 = "";
                         String temp = "";
 
-                        row2 += "<td class=\"droptarget\" colspan=\"" + currparam.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p></td>";
+                        row2 += "<td class=\"droptarget\" colspan=\"" + currparam.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p></td>";
                         totalbits += Integer.parseInt(currparam.getOffset());
 
                         int remainsize = LocationOptimizer.REG_SIZE - totalbits;
@@ -228,7 +294,7 @@ public class ParamWriter {
                         row1 = "<tr class=\"regheader\">" + row1 + "</tr>";
                         row2 = "<tr>" + row2 + "</tr>";
 
-                        temp = "<table class=\"regcontainer\"><tr><td class=\"regname\" contenteditable=\"true\">reg" + count + "</td></tr><tr><td ><table data-reg-type=\"" + currparam.getType() + "\" class=\"regtab\"><tbody>" + row1 + "" + row2 + "</tbody></table></td></tr></table><br>";
+                        temp = "<table data-offset=\"" + LocationOptimizer.REG_SIZE + "\" data-name=\"reg" + count + "\" class=\"regcontainer\"><tr><td class=\"regname\" contenteditable=\"true\">reg" + count + "</td></tr><tr><td ><table data-reg-type=\"" + currparam.getType() + "\" class=\"regtab\"><tbody>" + row1 + "" + row2 + "</tbody></table></td></tr></table><br>";
 
                         count++;
                         //ele3.after("<br>" + temp);
@@ -238,7 +304,7 @@ public class ParamWriter {
                          }*/
                         if (isgroupneed) {
                             //ele3.append("<br>" + temp);
-                            ele3.append("<br>" + temp + "<br><table class=\"reggroup\"><tr><td></td></tr></table>");
+                            ele3.append("<br>" + temp + "<br><table class=\"endreggroupparam\"><tr><td></td></tr></table>");
                         } else {
                             ele3.after("<br>" + temp);
                         }
@@ -316,7 +382,7 @@ public class ParamWriter {
             for (Parameters par : regg.getFields()) {
                 if (par != null) {
 
-                    row2 += "<td class=\"droptarget\" colspan=\"" + par.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + par.getField() + "\">" + par.getOffset() + "</p></td>";
+                    row2 += "<td class=\"droptarget\" colspan=\"" + par.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-size=\"" + par.getOffset() + "\" data-name=\"" + par.getField() + "\" data-desc=\"" + par.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + par.getField() + "\">" + par.getOffset() + "</p></td>";
                     totalbits += Integer.parseInt(par.getOffset());
                     count++;
                     /*
@@ -329,7 +395,7 @@ public class ParamWriter {
             }
 
             int remainsize = LocationOptimizer.REG_SIZE - totalbits;
-            System.out.println("--remain=" + remainsize + "--totalBits=" + totalbits);
+//            System.out.println("--remain=" + remainsize + "--totalBits=" + totalbits);
             for (int i = 0; i < remainsize; i++) {
                 row2 += "<td class=\"droptarget\"></td>";
             }
@@ -340,15 +406,15 @@ public class ParamWriter {
             row1 = "<tr class=\"regheader\">" + row1 + "</tr>";
             row2 = "<tr>" + row2 + "</tr>";
 
-            temp = "<table class=\"regcontainer\"><tr><td class=\"regname\" contenteditable=\"true\">" + regg.getRegname() + "</td></tr><tr><td ><table data-reg-type=\"" + regg.getRegType() + "\" class=\"regtab\"><tbody>" + row1 + "" + row2 + "</tbody></table></td></tr></table><br>";
+            temp = "<table data-offset=\"" + LocationOptimizer.REG_SIZE + "\" data-name=\"" + regg.getRegname() + "\" class=\"regcontainer\"><tr><td class=\"regname\" contenteditable=\"true\">" + regg.getRegname() + "</td></tr><tr><td ><table data-reg-type=\"" + regg.getRegType() + "\" class=\"regtab\"><tbody>" + row1 + "" + row2 + "</tbody></table></td></tr></table><br>";
 
             if (reggroup.equals("")) {
-                temp = "<br><br><table class=\"reggroup\"><tr><td>" + regg.getRegType() + "</td></tr></table><br>" + temp;
+                temp = "<br><br><table data-name=\"" + regg.getRegType() + "\" class=\"reggroup\"><tr><td>" + regg.getRegType() + "</td></tr></table><br>" + temp;
                 reggroup = regg.getRegType();
             } else if (reggroup.equals(regg.getRegType())) {
 
             } else if (!reggroup.equals(regg.getRegType())) {
-                temp = "<table class=\"reggroup\"><tr><td></td></tr></table><br><br><table class=\"reggroup\"><tr><td>" + regg.getRegType() + "</td></tr></table><br>" + temp;
+                temp = "<table class=\"endreggroupparam\"><tr><td></td></tr></table><br><br><table data-name=\"" + regg.getRegType() + "\" class=\"reggroup\"><tr><td>" + regg.getRegType() + "</td></tr></table><br>" + temp;
                 reggroup = regg.getRegType();
             }
 
@@ -357,7 +423,7 @@ public class ParamWriter {
 //            System.out.println("");
         }
 
-        str = str + "<table class=\"reggroup\"><tr><td></td></tr></table>";
+        str = str + "<table class=\"endreggroupparam\"><tr><td></td></tr></table>";
         //str = "<table class=\"regtab\"><tbody><tr class=\"regheader\"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"droptarget\" colspan=\"16\" style=\"background-color: cadetblue;\"><p draggable=\"true\" class=\"dragtarget\" id=\"dragtarget1\">16</p></td></tr></tbody></table>";
         // System.out.println("--str=" + str);
         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("writeparam('" + str + "')");

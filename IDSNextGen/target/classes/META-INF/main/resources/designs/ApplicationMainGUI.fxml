@@ -134,15 +134,22 @@
                                                 </Button>
                                              </right>
                                              <left>
-                                                <Label text="  Graphical View" BorderPane.alignment="CENTER">
+                                                <Label text="Param diff viewer" BorderPane.alignment="CENTER">
                                                    <font>
                                                       <Font size="9.0" />
                                                    </font>
                                                 </Label>
                                              </left>
+                                             <bottom>
+                                                <Pane fx:id="pnhelp" prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <Button fx:id="btnRegView" mnemonicParsing="false" onAction="#onclick_regview" text="Register View" />
+                                                      <Button fx:id="btnRegView1" layoutX="90.0" mnemonicParsing="false" onAction="#onclick_paramview" text="Param View" />
+                                                   </children>
+                                                </Pane>
+                                             </bottom>
                                           </BorderPane>
-                                          <Pane fx:id="pnhelp" layoutY="24.0" prefHeight="25.0" prefWidth="200.0" />
-                                          <VBox fx:id="vboxhelp" layoutX="7.0" layoutY="37.0" prefHeight="200.0" prefWidth="176.0" />
+                                          <VBox fx:id="vboxhelp" layoutY="42.0" prefHeight="200.0" prefWidth="176.0" />
                                        </children>
                                     </Pane>
                                     <Pane prefHeight="200.0" prefWidth="200.0">
@@ -196,16 +203,16 @@
          <right>
             <Pane fx:id="paneRightSideBtns" prefHeight="595.0" prefWidth="21.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="-30.0" layoutY="28.0" mnemonicParsing="false" onAction="#click_btnGraphicalView" rotate="90.0" text="Graphical View">
+                  <Button layoutX="-33.0" layoutY="34.0" mnemonicParsing="false" onAction="#click_btnGraphicalView" rotate="90.0" text="Param diff viewer">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <Button disable="true" layoutX="-33.0" layoutY="111.0" mnemonicParsing="false" onAction="#click_btnHieraricalView" rotate="90.0" text="Hierarichal View">
+                  <Button disable="true" layoutX="-33.0" layoutY="124.0" mnemonicParsing="false" onAction="#click_btnHieraricalView" rotate="90.0" text="Hierarichal View">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCOnsoleOpen" alignment="CENTER" disable="true" layoutX="-15.0" layoutY="179.0" mnemonicParsing="false" onAction="#click_btnCOnsoleOpen" rotate="90.0" text="Console">
+                  <Button fx:id="btnCOnsoleOpen" alignment="CENTER" disable="true" layoutX="-15.0" layoutY="194.0" mnemonicParsing="false" onAction="#click_btnCOnsoleOpen" rotate="90.0" text="Console">
                      <font>
                         <Font size="10.0" />
                      </font>

@@ -17,6 +17,7 @@ import com.agnisys.idsnextgen.editorutils.IDSNGEditorFileHandler;
 import com.agnisys.idsnextgen.global.HTMLEditorInstances;
 import com.agnisys.idsnextgen.global.IDSUtils;
 import com.agnisys.idsnextgen.licensevalidation.IDSLicenseManager;
+import com.agnisys.idsnextgen.param.ParamWriter;
 import com.agnisys.idsnextgen.transformation.Transformation;
 import com.sun.javafx.tk.Toolkit;
 import java.awt.Desktop;
@@ -1314,6 +1315,19 @@ public class ApplicationMainGUIController implements Initializable {
     }
     //</editor-fold>
 
+    @FXML
+    private void onclick_paramview() {
+
+    }
+
+    @FXML
+    private void onclick_regview() {
+        ParamWriter paramwriter = new ParamWriter();
+        paramwriter.onRegisterView();
+        //String str = "<h2>Helllo world</h2>";
+        //getActiveWebEngine().executeScript("regviewupdate('" + str + "')");
+    }
+
     //<editor-fold defaultstate="collapsed" desc="click_graphicalViewBtn">
     @FXML
     private void click_btnGraphicalView(ActionEvent event) {
@@ -1324,7 +1338,7 @@ public class ApplicationMainGUIController implements Initializable {
         if (splitView.getDividerPositions()[1] < 0.98) {
             splitView.setDividerPosition(1, 1.0);
         } else {
-            splitView.setDividerPosition(1, 0.8);
+            splitView.setDividerPosition(1, 0.85);
         }
     }
     //</editor-fold>
