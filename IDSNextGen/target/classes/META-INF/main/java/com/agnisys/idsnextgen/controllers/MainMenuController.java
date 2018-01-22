@@ -176,6 +176,15 @@ public class MainMenuController implements Initializable {
     //</editor-fold >
 
     @FXML
+    private void click_parameters() {
+        if (ApplicationMainGUIController.APPLICATION_OBJECT.SELECTED_FILE == null) {
+            ApplicationMainGUIController.APPLICATION_OBJECT.printConsole("Error : Please Select location from project explorer first");
+            return;
+        }
+        ApplicationMainGUIController.APPLICATION_OBJECT.showFXMLWindow("/designs/Parameters.fxml");
+    }
+
+    @FXML
     private void click_addIP() {
         if (ApplicationMainGUIController.APPLICATION_OBJECT.SELECTED_FILE == null) {
             ApplicationMainGUIController.APPLICATION_OBJECT.printConsole("Error : Please Select location from project explorer first");

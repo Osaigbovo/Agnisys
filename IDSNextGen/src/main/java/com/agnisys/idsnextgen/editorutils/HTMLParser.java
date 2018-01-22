@@ -26,8 +26,9 @@ public class HTMLParser {
     private final static String IDS_CSS_ID = "ids_style_template";
     private final static String IDS_JS_ID = "ids_js";
     private final static String JQUERY_TAG_ID = "jqueryLib";
-    //private final static String JQUERY_LIB_PATH = "C:\\Users\\Agnisys\\Desktop\\GUI demo\\workspace\\myFirstProj\\sumeet\\resource\\jquery-3.2.1.min.js";
+    private final static String PARAM_TAG_ID = "param_js";
 
+    //private final static String JQUERY_LIB_PATH = "C:\\Users\\Agnisys\\Desktop\\GUI demo\\workspace\\myFirstProj\\sumeet\\resource\\jquery-3.2.1.min.js";
     public static String addIDSStyleAndCss(String filePath) {
         try {
 
@@ -48,6 +49,28 @@ public class HTMLParser {
 
                 //add js
                 String jsString = "<script id='" + IDS_JS_ID + "'>" + readFile(ApplicationMainGUIController.APPLICATION_OBJECT.getIDS_JS()) + "</script>";
+                header.append(jsString);
+
+                //FileUtils.writeStringToFile(file, doc.outerHtml(), "UTF-8");
+                return doc.outerHtml();
+            }
+        } catch (Exception e) {
+            System.err.println("Err (addIDSStyleAndCss) : " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static String addparamcss(String str) {
+        try {
+
+            //File cssFile = IDSUtils.loadSystemResource("ids_templates/ids_template.css");
+            //File jsFile = IDSUtils.loadSystemResource("ids_templates/ids_template.js");
+            Document doc = Jsoup.parse(str);
+            if (doc != null) {
+                Element header = doc.select("head").first();
+
+                //add js
+                String jsString = "<script id='" + PARAM_TAG_ID + "'>" + readFile(ApplicationMainGUIController.APPLICATION_OBJECT.getIDS_JS()) + "</script>";
                 header.append(jsString);
 
                 //FileUtils.writeStringToFile(file, doc.outerHtml(), "UTF-8");
@@ -163,6 +186,11 @@ public class HTMLParser {
             }
 
             elem = doc.select("script#" + JQUERY_TAG_ID);
+            if (elem != null) {
+                elem.remove();
+            }
+
+            elem = doc.select("script#" + PARAM_TAG_ID);
             if (elem != null) {
                 elem.remove();
             }

@@ -1,4 +1,5 @@
 com\agnisys\idsnextgen\controllers\ErrorWindowController$1.class
+com\agnisys\idsnextgen\controllers\ParametersController$1.class
 com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$13.class
 com\agnisys\idsnextgen\classes\ImageConvertor.class
 com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$3.class
@@ -20,6 +21,7 @@ com\agnisys\idsnextgen\controllers\config\properties\Template.class
 com\agnisys\idsnextgen\classes\WebController.class
 com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$21.class
 com\agnisys\idsnextgen\controllers\config\properties\Datasheet.class
+com\agnisys\idsnextgen\controllers\ParametersController.class
 com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$23.class
 com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$30.class
 com\agnisys\idsnextgen\team\TeamRunnable.class
@@ -29,6 +31,7 @@ com\agnisys\idsnextgen\editorutils\HTMLEditorCustomizationSample$1.class
 com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$29.class
 com\agnisys\idsnextgen\global\IDSUtils.class
 com\agnisys\idsnextgen\controllers\NewProjectWizardController.class
+com\agnisys\idsnextgen\controllers\ApplicationMainGUIController$35.class
 com\agnisys\idsnextgen\controllers\config\ConfigSettingsController.class
 com\agnisys\idsnextgen\controllers\config\ConfigFormatingController.class
 com\agnisys\idsnextgen\controllers\AlertMessageController.class

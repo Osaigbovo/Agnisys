@@ -36,8 +36,94 @@ public class ParamWriter {
     HashMap<Parameters, Parameters> paramDiff = null;
     Document htmldoc = null;
 
+    public void onParamView() {
+        String htmlContents = Transformer.readFileAsString(IDSUtils.getActiveOrgFilePath());
+        htmldoc = Jsoup.parse(htmlContents);
+
+        List idsTemps = htmldoc.getElementsByClass("idsTemp");
+        Element ParamDiv = htmldoc.getElementById("paramcontainer");
+
+        for (Object idstemp : idsTemps) {
+            Element idstab = (Element) idstemp;
+            String cls = idstab.attr("class").split(" ")[0];
+            System.out.println("--cls name : " + cls);
+            switch (cls) {
+                case "section":
+                    updateRegGroup(idstab, ParamDiv);
+                    break;
+
+                case "reg":
+                    updateReg(idstab, ParamDiv);
+                    break;
+            }
+        }
+        hideregview();
+        save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc.toString());
+        //ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("hideregview()");
+        ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
+
+        // System.out.println("--param=" + ParamDiv.toString());
+        //ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("updateParamView('" + ParamDiv.toString() + "')");
+    }
+
+    private void hideregview() {
+        htmldoc.getElementById("regdivcontainer").attr("style", "display:none");
+        htmldoc.getElementById("paramcontainer").attr("style", "display:block");
+    }
+
+    private void updateRegGroup(Element ele, Element paramdiv) {
+        String id = ele.attr("id");
+        String prop = ele.getElementsByClass("propclass").get(0).text();
+        String desc = ele.getElementsByClass("descclass").get(0).text();
+        String offset = ele.getElementsByClass("offset").get(0).text();
+
+        Element param = paramdiv.getElementsByAttributeValue("data-name", id).get(0);
+        param.attr("data-prop", prop);
+        param.attr("data-desc", desc);
+        param.attr("data-offset", offset);
+    }
+
+    private void updateReg(Element ele, Element paramdiv) {
+        //read register values from register view
+        String id = ele.attr("id");
+        String prop = ele.getElementsByClass("propclass").get(0).text();
+        String desc = ele.getElementsByClass("descclass").get(0).text();
+        String offset = ele.getElementsByClass("offset").get(0).text();
+
+        //update register value in parameters
+        Element param = paramdiv.getElementsByAttributeValue("data-name", id).get(0);
+        param.attr("data-prop", prop);
+        param.attr("data-desc", desc);
+        param.attr("data-offset", offset);
+
+        //read field values from register view
+        List fields = ele.getElementsByClass("field");
+
+        for (Object field : fields) {
+            Element f = (Element) field;
+            String fieldname = f.getElementsByClass("fieldname").get(0).text().trim();
+            String bits = f.getElementsByClass("bits").get(0).text().trim();
+            String sw = f.getElementsByClass("sw").get(0).text().trim();
+            String hw = f.getElementsByClass("hw").get(0).text().trim();
+            String defaul = f.getElementsByClass("default").get(0).text().trim();
+            String fdesc = f.getElementsByClass("desc").get(0).text().trim();
+            String propcls = "";
+            if (f.getElementsByClass("propclass").size() > 0) {
+                propcls = f.getElementsByClass("propclass").get(0).text().trim();
+            }
+            //update field values in parameters
+            Element paramfield = paramdiv.getElementsByAttributeValue("data-name", fieldname).get(0);
+            paramfield.attr("data-bits", bits);
+            paramfield.attr("data-sw", sw);
+            paramfield.attr("data-hw", hw);
+            paramfield.attr("data-default", defaul);
+            paramfield.attr("data-desc", fdesc);
+            paramfield.attr("data-prop", propcls);
+
+        }
+    }
+
     public void onRegisterView() {
-        System.out.println("--call param writer");
         String str = "";
         String htmlContents = Transformer.readFileAsString(IDSUtils.getActiveOrgFilePath());
         htmldoc = Jsoup.parse(htmlContents);
@@ -48,7 +134,7 @@ public class ParamWriter {
         for (Object group : groups) {
 
             Element tab = ((Element) group);
-            System.out.println("--class name=" + tab.attr("class"));
+            //System.out.println("--class name=" + tab.attr("class"));
             String tabcls = tab.attr("class");
             switch (tabcls) {
                 case "reggroup":
@@ -86,10 +172,10 @@ public class ParamWriter {
             Element f = (Element) field;
             row += "<tr onkeyup=\"setCurrRow(this);\" onclick=\"setCurrRow(this);\" class=\"field edited\"><td class=\"bits\">" + f.attr("data-size") + "</td><td class=\"fieldname\" >" + f.attr("data-name") + "</td><td class=\"sw\">" + f.attr("data-sw") + "</td><td class=\"hw\">" + f.attr("data-hw") + "</td><td class=\"default\">" + f.attr("data-default") + "</td><td class=\"desc fielddesc\" onkeydown=\"insertNewRow(event,this);\">" + f.attr("data-desc") + "</td></tr>";
         }
-        fieldstr = "<table class=\"fields idsTemp\" id=\"tab_reg_field" + name + "\"><tr class=\"label\"><td class=\"ddregbits\">bits</td><td class=\"lblfieldname\">name</td><td class=\"lblsw\">s/w</td><td class=\"lblhw\">h/w</td><td class=\"lbldefault\">default</td><td class=\"lbldesc\">description</td></tr>" + row + "</table>";
+        fieldstr = "<table class=\"fields idsTemp\" id=\"field" + name + "\"><tr class=\"label\"><td class=\"ddregbits\">bits</td><td class=\"lblfieldname\">name</td><td class=\"lblsw\">s/w</td><td class=\"lblhw\">h/w</td><td class=\"lbldefault\">default</td><td class=\"lbldesc\">description</td></tr>" + row + "</table>";
 
         String imgPath = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVHja1JNdUoMwEMc3gM744EX0CF6iXsZXPY9Tq97Gj1ptRynfpKVQCCHbTWhLeebJzCSzf0h+5L+7MESEIcOCgWMwwLm+fRjm4WZ0h49fJY6nGU6mKV6N7vH1k+PzR4yT98Dopzef4ohmYvTL9xrHs62JHQ3JgwRUnYNqKgMNeQyIDSAooyOeAGM2RbbR8eIP7PPL1oJeZpEHFlaUEGkeLn7XdIAOs9ad6xWknT2EdJZADXkHWLqCvl6DUi1gHnDazI42f4IcdLkPJZ8tKrBtuwNEYQxKCsCmBQgvA3aSJ+FnPUDsx8CcbQdIVyVZaGi2nuc5gU4abL6p4bThio0EaVUdIOQFWErRbDeJlderVL1a9gBhWoJg0tzSAGRVwJn2vPe9SeCYA71mnB0vpJ2jEiZfOnZSuABn7YJ+Lw/tWfv9di2XPS25uy+oLtS//5l2AgwAgHLTw4hIPJYAAAAASUVORK5CYII";
-        String reg = "<table contenteditable=\"false\" onclick=\"tabClick(this);\" class=\"reg idsTemp\" id=\"tab_reg" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td title=\"reg name\" class=\"name\">" + name + "</td><td title=\"offset\" class=\"offset\" colspan=\"2\">" + offset + "</td><td class=\"specImage\"><img title=\"Register\" alt=\"Register\" src=" + imgPath + "></td><td class=\"address addCell readOnly\" ><div class=\"splitVer setBorder\" title=\"address\"><label class=\"label\">address|</label><label class=\"addrvalue\"></label></div><div class=\"splitVer\" title=\"Default\"><label class=\"label\">default |</label><label class=\"defvalue\"></label></div> </td> <td class=\"regwidth hideWidth\">32</td></tr><tr><td colspan=\"6\" title=\"add properties\" class=\"propclass\" contenteditable=\"true\">" + prop + "</td></tr><tr><td colspan=\"6\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr><tr><td colspan=\"6\" class=\"border\"></td></tr><tr><td colspan=\"6\" class=\"fieldtd\">" + fieldstr + "</td></tr></tbody></table><br>";
+        String reg = "<table contenteditable=\"false\" onclick=\"tabClick(this);\" class=\"reg idsTemp\" id=\"" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td title=\"reg name\" class=\"name\">" + name + "</td><td title=\"offset\" class=\"offset\" colspan=\"2\">" + offset + "</td><td class=\"specImage\"><img title=\"Register\" alt=\"Register\" src=" + imgPath + "></td><td class=\"address addCell readOnly\" ><div class=\"splitVer setBorder\" title=\"address\"><label class=\"label\">address|</label><label class=\"addrvalue\"></label></div><div class=\"splitVer\" title=\"Default\"><label class=\"label\">default |</label><label class=\"defvalue\"></label></div> </td> <td class=\"regwidth hideWidth\">32</td></tr><tr><td colspan=\"6\" title=\"add properties\" class=\"propclass\" contenteditable=\"true\">" + prop + "</td></tr><tr><td colspan=\"6\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr><tr><td colspan=\"6\" class=\"border\"></td></tr><tr><td colspan=\"6\" class=\"fieldtd\">" + fieldstr + "</td></tr></tbody></table><br>";
         return reg;
     }
 
@@ -99,7 +185,7 @@ public class ParamWriter {
         String desc = ele.attr("data-desc");
         String prop = ele.attr("data-prop");
         String imgPath = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABkSURBVHjaYvz//z8DJYBFOqSVIhNYQMTkugwUwdymGShiyHx0NhMDhYBRKriFci+snFjO8PX7T4akiglYnYrPa2AvsLCwMLAwMw+gF3CF+BCKBUKhjc87FHth4MOAkdLsDBBgAAAIP+g8PM01AAAAAElFTkSuQmCC";
-        String reggroup = "<br><table contenteditable=\"false\" class=\"section idsTemp\" onclick=\"tabClick(this)\" id=\"tab_section" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td class=\"name\" title=\"reg group name\">" + name + "</td><td title=\"offset\" class=\"offset\">" + offset + "</td><td class=\"specImage\"><img title=\"RegGroup\" alt=\"RegGrou[]\" src=" + imgPath + "></td><td class=\"address addCell readOnly\"><label class=\"label\">address|</label><label class=\"addrvalue\" title=\"address\"></label></td></tr><tr><td colspan=\"5\" title=\"add properties\"  class=\"propclass\">" + prop + "</td></tr><tr><td colspan=\"5\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr></tbody> </table><br>";
+        String reggroup = "<br><table contenteditable=\"false\" class=\"section idsTemp\" onclick=\"tabClick(this)\" id=\"" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td class=\"name\" title=\"reg group name\">" + name + "</td><td title=\"offset\" class=\"offset\">" + offset + "</td><td class=\"specImage\"><img title=\"RegGroup\" alt=\"RegGrou[]\" src=" + imgPath + "></td><td class=\"address addCell readOnly\"><label class=\"label\">address|</label><label class=\"addrvalue\" title=\"address\"></label></td></tr><tr><td colspan=\"5\" title=\"add properties\"  class=\"propclass\">" + prop + "</td></tr><tr><td colspan=\"5\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr></tbody> </table><br>";
         return reggroup;
     }
 
@@ -359,9 +445,9 @@ public class ParamWriter {
 
     static int count = 0;
 
-    public void writeParam() {
+    public void writeParam(File yamlFile) {
         YamlParser parser = new YamlParser();
-        ArrayList<Parameters> params = parser.readYamlData(new File("D:\\AgnisysProjects\\java\\MatlabParameter\\src\\main\\java\\com\\agnisys\\matlabparameter\\yamlparser\\Final_Allagro_Data.yml"));
+        ArrayList<Parameters> params = parser.readYamlData(yamlFile);
         //System.out.println("--yaml length=" + params.size());
 
         LocationOptimizer ob = new LocationOptimizer();
@@ -406,7 +492,7 @@ public class ParamWriter {
             row1 = "<tr class=\"regheader\">" + row1 + "</tr>";
             row2 = "<tr>" + row2 + "</tr>";
 
-            temp = "<table data-offset=\"" + LocationOptimizer.REG_SIZE + "\" data-name=\"" + regg.getRegname() + "\" class=\"regcontainer\"><tr><td class=\"regname\" contenteditable=\"true\">" + regg.getRegname() + "</td></tr><tr><td ><table data-reg-type=\"" + regg.getRegType() + "\" class=\"regtab\"><tbody>" + row1 + "" + row2 + "</tbody></table></td></tr></table><br>";
+            temp = "<table data-name=\"" + regg.getRegname() + "\" class=\"regcontainer\"><tr><td class=\"regname\" contenteditable=\"true\">" + regg.getRegname() + "</td></tr><tr><td ><table data-reg-type=\"" + regg.getRegType() + "\" class=\"regtab\"><tbody>" + row1 + "" + row2 + "</tbody></table></td></tr></table><br>";
 
             if (reggroup.equals("")) {
                 temp = "<br><br><table data-name=\"" + regg.getRegType() + "\" class=\"reggroup\"><tr><td>" + regg.getRegType() + "</td></tr></table><br>" + temp;

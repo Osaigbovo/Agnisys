@@ -58,6 +58,7 @@ D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\g
 D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\param\ParamWriter.java
 D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\controllers\config\ConfigOutputsController.java
 D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\global\IDSUtils.java
+D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\controllers\ParametersController.java
 D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\classes\Command.java
 D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\controllers\config\properties\General.java
 D:\AgnisysProjects\IDS-NextGen\IDSNextGen\src\main\java\com\agnisys\idsnextgen\global\HTMLEditorInstances.java

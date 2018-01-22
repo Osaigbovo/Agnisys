@@ -185,6 +185,7 @@ public class ApplicationMainGUIController implements Initializable {
     private String JQUERY_LIB_PATH;
     private String IDS_CSS;
     private String IDS_JS;
+    private String PARAM_JS;
     IDSToolbarController idsToolbarController;
     EditorToolbarController editorToolbarController;
     public IDSTerminal idsterminal;
@@ -320,6 +321,7 @@ public class ApplicationMainGUIController implements Initializable {
         System.err.println("--JQUERYLIBPATH : " + JQUERY_LIB_PATH);
         IDS_CSS = IDSUtils.loadSystemResource("ids_templates/ids_template.css").getAbsolutePath();
         IDS_JS = IDSUtils.loadSystemResource("ids_templates/ids_template.js").getAbsolutePath();
+        PARAM_JS = IDSUtils.loadSystemResource("ids_templates/ids_param.js").getAbsolutePath();
     }
 
     public static void main(String[] arg) {
@@ -337,6 +339,10 @@ public class ApplicationMainGUIController implements Initializable {
 
     public String getIDS_JS() {
         return IDS_JS;
+    }
+
+    public String getParam_JS() {
+        return PARAM_JS;
     }
 
     //<editor-fold defaultstate="collapsed" desc="load window view layout">
@@ -786,6 +792,19 @@ public class ApplicationMainGUIController implements Initializable {
             }
         });
 
+        MenuItem paramSpec = new MenuItem("Parameters");
+        paramSpec.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if (SELECTED_FILE == null) {
+                    IDSUtils.showErrorMessage("Warning : Please select file from project explorer");
+                } else {
+                    showFXMLWindow("/designs/Parameters.fxml");
+                }
+            }
+        });
+
         MenuItem Text = new MenuItem("Text");
         Text.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -814,7 +833,7 @@ public class ApplicationMainGUIController implements Initializable {
         });
 
         addFileMenu.getItems().clear();
-        addFileMenu.getItems().addAll(newIP, regSpec, Canvas, new SeparatorMenuItem(), Text, Folder);
+        addFileMenu.getItems().addAll(newIP, regSpec, paramSpec, Canvas, new SeparatorMenuItem(), Text, Folder);
 
         open.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -1317,7 +1336,8 @@ public class ApplicationMainGUIController implements Initializable {
 
     @FXML
     private void onclick_paramview() {
-
+        ParamWriter paramwriter = new ParamWriter();
+        paramwriter.onParamView();
     }
 
     @FXML

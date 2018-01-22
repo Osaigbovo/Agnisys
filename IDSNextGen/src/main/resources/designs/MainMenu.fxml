@@ -42,6 +42,7 @@
                         <MenuItem fx:id="menuItmNewIP" mnemonicParsing="false" onAction="#click_IPWizard" />
                         <MenuItem fx:id="menuItmNewReg" mnemonicParsing="false" onAction="#click_NewRegFileWizard" />
                         <MenuItem fx:id="menuItmNewText" mnemonicParsing="false" onAction="#click_NewTextFileWizard" />
+                        <MenuItem mnemonicParsing="false" onAction="#click_parameters" text="Parameters" />
                         <!--<MenuItem fx:id="menuItmNewCanvas" disable="true" mnemonicParsing="false" />-->
                     </items>
                   </Menu>

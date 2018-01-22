@@ -185,7 +185,11 @@ public class IDSToolbarController implements Initializable {
 //        System.out.println("testGit start");
 
         ParamWriter param = new ParamWriter();
-        param.writeParam();
+        //File yamlFIle = new File("D:\\AgnisysProjects\\java\\MatlabParameter\\src\\main\\java\\com\\agnisys\\matlabparameter\\yamlparser\\Final_Allagro_Data.yml");
+        File yamlFIle = ApplicationMainGUIController.APPLICATION_OBJECT.fileChooser();
+        if (yamlFIle != null) {
+            param.writeParam(yamlFIle);
+        }
 //        System.out.println("create repository done");
 
     }
