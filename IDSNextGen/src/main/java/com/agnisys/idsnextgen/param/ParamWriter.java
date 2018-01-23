@@ -46,7 +46,6 @@ public class ParamWriter {
         for (Object idstemp : idsTemps) {
             Element idstab = (Element) idstemp;
             String cls = idstab.attr("class").split(" ")[0];
-            System.out.println("--cls name : " + cls);
             switch (cls) {
                 case "section":
                     updateRegGroup(idstab, ParamDiv);
@@ -58,8 +57,13 @@ public class ParamWriter {
             }
         }
         hideregview();
+
+        //save in org file. should find better solution
         save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc.toString());
         //ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("hideregview()");
+        //ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().load(IDSUtils.getActiveOrgFilePath());//.reload();//.executeScript("reloadPage()");
+        save(new File(IDSUtils.getActiveFilePath()), htmldoc.toString());
+//        System.out.println(htmldoc.toString());
         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
 
         // System.out.println("--param=" + ParamDiv.toString());
@@ -69,6 +73,7 @@ public class ParamWriter {
     private void hideregview() {
         htmldoc.getElementById("regdivcontainer").attr("style", "display:none");
         htmldoc.getElementById("paramcontainer").attr("style", "display:block");
+
     }
 
     private void updateRegGroup(Element ele, Element paramdiv) {
@@ -165,17 +170,62 @@ public class ParamWriter {
 
         //read filed here
         String fieldstr;
-        List fieldsele = ele.getElementsByClass("dragtarget");
+        /*
+         List fieldsele = ele.getElementsByClass("dragtarget");
+         String row = "";
+
+         //for (Object field : fieldsele)
+         String foffset;
+         int counter = 0;
+         int size;
+         for (int i = fieldsele.size() - 1; i >= 0; i--) {
+         Element f = (Element) fieldsele.get(i);
+         foffset = f.attr("data-size");
+         size = Integer.parseInt(foffset);
+         if (size > 1) {
+         foffset = counter + ":" + (counter + size);
+         counter += size;
+         } else {
+         foffset = String.valueOf(counter);
+         }
+         counter++;
+         row += "<tr onkeyup=\"setCurrRow(this);\" onclick=\"setCurrRow(this);\" class=\"field edited\"><td class=\"bits\">" + foffset + "</td><td class=\"fieldname\" >" + f.attr("data-name") + "</td><td class=\"sw\">" + f.attr("data-sw") + "</td><td class=\"hw\">" + f.attr("data-hw") + "</td><td class=\"default\">" + f.attr("data-default") + "</td><td class=\"desc fielddesc\" onkeydown=\"insertNewRow(event,this);\">" + f.attr("data-desc") + "</td></tr>";
+         }
+         */
+
+        List fieldsele = ele.getElementsByClass("droptarget");
         String row = "";
 
-        for (Object field : fieldsele) {
-            Element f = (Element) field;
-            row += "<tr onkeyup=\"setCurrRow(this);\" onclick=\"setCurrRow(this);\" class=\"field edited\"><td class=\"bits\">" + f.attr("data-size") + "</td><td class=\"fieldname\" >" + f.attr("data-name") + "</td><td class=\"sw\">" + f.attr("data-sw") + "</td><td class=\"hw\">" + f.attr("data-hw") + "</td><td class=\"default\">" + f.attr("data-default") + "</td><td class=\"desc fielddesc\" onkeydown=\"insertNewRow(event,this);\">" + f.attr("data-desc") + "</td></tr>";
+        //for (Object field : fieldsele)
+        String foffset;
+        int counter = 0;
+        int size;
+        for (int i = fieldsele.size() - 1; i >= 0; i--) {
+            Element f = (Element) fieldsele.get(i);
+
+            List ptaglist = f.getElementsByTag("p");
+
+            if (ptaglist.size() > 0) {
+                Element ptag = (Element) ptaglist.get(0);
+                foffset = ptag.attr("data-size");
+                size = Integer.parseInt(foffset);
+                if (size > 1) {
+                    foffset = counter + ":" + (counter + size - 1);
+                    counter += size;
+                } else {
+                    foffset = String.valueOf(counter);
+                    counter++;
+                }
+                row += "<tr onkeyup=\"setCurrRow(this);\" onclick=\"setCurrRow(this);\" class=\"field edited\"><td contenteditable=\"false\" class=\"bits\">" + foffset + "</td><td contenteditable=\"false\" class=\"fieldname\" >" + ptag.attr("data-name") + "</td><td class=\"sw\">" + ptag.attr("data-sw") + "</td><td class=\"hw\">" + ptag.attr("data-hw") + "</td><td class=\"default\">" + ptag.attr("data-default") + "</td><td class=\"desc fielddesc\" onkeydown=\"insertNewRow(event,this);\">" + ptag.attr("data-desc") + "</td></tr>";
+            } else {
+                counter++;
+            }
         }
+
         fieldstr = "<table class=\"fields idsTemp\" id=\"field" + name + "\"><tr class=\"label\"><td class=\"ddregbits\">bits</td><td class=\"lblfieldname\">name</td><td class=\"lblsw\">s/w</td><td class=\"lblhw\">h/w</td><td class=\"lbldefault\">default</td><td class=\"lbldesc\">description</td></tr>" + row + "</table>";
 
         String imgPath = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVHja1JNdUoMwEMc3gM744EX0CF6iXsZXPY9Tq97Gj1ptRynfpKVQCCHbTWhLeebJzCSzf0h+5L+7MESEIcOCgWMwwLm+fRjm4WZ0h49fJY6nGU6mKV6N7vH1k+PzR4yT98Dopzef4ohmYvTL9xrHs62JHQ3JgwRUnYNqKgMNeQyIDSAooyOeAGM2RbbR8eIP7PPL1oJeZpEHFlaUEGkeLn7XdIAOs9ad6xWknT2EdJZADXkHWLqCvl6DUi1gHnDazI42f4IcdLkPJZ8tKrBtuwNEYQxKCsCmBQgvA3aSJ+FnPUDsx8CcbQdIVyVZaGi2nuc5gU4abL6p4bThio0EaVUdIOQFWErRbDeJlderVL1a9gBhWoJg0tzSAGRVwJn2vPe9SeCYA71mnB0vpJ2jEiZfOnZSuABn7YJ+Lw/tWfv9di2XPS25uy+oLtS//5l2AgwAgHLTw4hIPJYAAAAASUVORK5CYII";
-        String reg = "<table contenteditable=\"false\" onclick=\"tabClick(this);\" class=\"reg idsTemp\" id=\"" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td title=\"reg name\" class=\"name\">" + name + "</td><td title=\"offset\" class=\"offset\" colspan=\"2\">" + offset + "</td><td class=\"specImage\"><img title=\"Register\" alt=\"Register\" src=" + imgPath + "></td><td class=\"address addCell readOnly\" ><div class=\"splitVer setBorder\" title=\"address\"><label class=\"label\">address|</label><label class=\"addrvalue\"></label></div><div class=\"splitVer\" title=\"Default\"><label class=\"label\">default |</label><label class=\"defvalue\"></label></div> </td> <td class=\"regwidth hideWidth\">32</td></tr><tr><td colspan=\"6\" title=\"add properties\" class=\"propclass\" contenteditable=\"true\">" + prop + "</td></tr><tr><td colspan=\"6\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr><tr><td colspan=\"6\" class=\"border\"></td></tr><tr><td colspan=\"6\" class=\"fieldtd\">" + fieldstr + "</td></tr></tbody></table><br>";
+        String reg = "<table contenteditable=\"false\" onclick=\"tabClick(this);\" class=\"reg idsTemp\" id=\"" + name + "\"><tbody><tr><td class=\"header readOnly\"></td><td contenteditable=\"false\" title=\"reg name\" class=\"name\">" + name + "</td><td contenteditable=\"false\" title=\"offset\" class=\"offset\" colspan=\"2\">" + offset + "</td><td class=\"specImage\"><img title=\"Register\" alt=\"Register\" src=" + imgPath + "></td><td class=\"address addCell readOnly\" ><div class=\"splitVer setBorder\" title=\"address\"><label class=\"label\">address|</label><label class=\"addrvalue\"></label></div><div class=\"splitVer\" title=\"Default\"><label class=\"label\">default |</label><label class=\"defvalue\"></label></div> </td> <td class=\"regwidth hideWidth\">32</td></tr><tr><td colspan=\"6\" title=\"add properties\" class=\"propclass\" contenteditable=\"true\">" + prop + "</td></tr><tr><td colspan=\"6\" title=\"add description here\" class=\"desc descclass\">" + desc + "</td></tr><tr><td colspan=\"6\" class=\"border\"></td></tr><tr><td colspan=\"6\" class=\"fieldtd\">" + fieldstr + "</td></tr></tbody></table><br>";
         return reg;
     }
 
@@ -483,7 +533,8 @@ public class ParamWriter {
             int remainsize = LocationOptimizer.REG_SIZE - totalbits;
 //            System.out.println("--remain=" + remainsize + "--totalBits=" + totalbits);
             for (int i = 0; i < remainsize; i++) {
-                row2 += "<td class=\"droptarget\"></td>";
+//                row2 += "<td class=\"droptarget\"></td>";
+                row2 = "<td class=\"droptarget\"></td>" + row2;
             }
 
             for (int i = 0; i < LocationOptimizer.REG_SIZE; i++) {

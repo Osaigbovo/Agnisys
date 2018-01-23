@@ -30,7 +30,7 @@ public class IDSFileUtils {
     public static void saveToIDSNG(File htmlFile, String content) {
         try {
             File idsngFile = new File(htmlFile.getParent() + File.separator + FilenameUtils.removeExtension(htmlFile.getName()) + ".idsng");
-            System.out.println("--idsng org file=" + idsngFile.getAbsolutePath());
+            //System.out.println("--idsng org file=" + idsngFile.getAbsolutePath());
             if (idsngFile.exists()) {
                 FileUtils.writeStringToFile(idsngFile, content);
             } else {

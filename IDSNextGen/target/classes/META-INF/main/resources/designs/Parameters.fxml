@@ -14,14 +14,14 @@
           <center>
       <Pane prefHeight="198.0" prefWidth="341.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblFileType" layoutX="14.0" layoutY="27.0" text="Import Param :" />
-            <TextField fx:id="txtimportParam" layoutX="106.0" layoutY="23.0" prefHeight="25.0" prefWidth="418.0" />
+            <Label fx:id="lblFileType" disable="true" layoutX="14.0" layoutY="27.0" text="Import Param :" />
+            <TextField fx:id="txtimportParam" disable="true" layoutX="106.0" layoutY="23.0" prefHeight="25.0" prefWidth="418.0" />
             <Label fx:id="lblFileLocation" layoutX="14.0" layoutY="290.0" text="Location :" />
             <TextField fx:id="txtLocation" layoutX="106.0" layoutY="286.0" prefHeight="25.0" prefWidth="418.0" />
             <Button fx:id="btnBrowse" layoutX="532.0" layoutY="286.0" mnemonicParsing="false" onAction="#browseImport" text="Browse" />
             <Label fx:id="lblFileName" layoutX="14.0" layoutY="254.0" text="File Name : " />
             <TextField fx:id="txtFileName" layoutX="106.0" layoutY="250.0" prefHeight="25.0" prefWidth="481.0" />
-            <Button fx:id="btnBrowse1" layoutX="532.0" layoutY="23.0" mnemonicParsing="false" onAction="#browseImport" text="Browse" />
+            <Button fx:id="btnBrowse1" disable="true" layoutX="532.0" layoutY="23.0" mnemonicParsing="false" onAction="#browseImport" text="Browse" />
          </children>
       </Pane>
    </center>
