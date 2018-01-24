@@ -11,6 +11,7 @@ import com.agnisys.idsnextgen.global.IDSUtils;
 import com.agnisys.matlabparameter.LocationOptimizer;
 import com.agnisys.matlabparameter.model.Parameters;
 import com.agnisys.matlabparameter.model.Registers;
+import com.agnisys.matlabparameter.yamlparser.YamlDiff;
 import com.agnisys.matlabparameter.yamlparser.YamlParser;
 import java.io.File;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class ParamWriter {
 
     HashMap<Parameters, Parameters> paramDiff = null;
     Document htmldoc = null;
+    public static String currYAMLFile;
 
     public void onParamView() {
         String htmlContents = Transformer.readFileAsString(IDSUtils.getActiveOrgFilePath());
@@ -239,9 +241,13 @@ public class ParamWriter {
         return reggroup;
     }
 
-    public void updateParam() {
+    public void updateParam(File yamlfile) {
         ApplicationMainGUIController.APPLICATION_OBJECT.vboxhelp.getChildren().clear();
-        paramDiff = getparadiff();
+
+        YamlDiff parser = new YamlDiff();
+        paramDiff = parser.getYamlDiff(new File(currYAMLFile), yamlfile);
+        System.out.println("--diff length=" + paramDiff.size());
+        //paramDiff = getparadiff();
         Set entryset = paramDiff.entrySet();
         Iterator it;
 
@@ -256,6 +262,8 @@ public class ParamWriter {
             while (it.hasNext()) {
                 Map.Entry me = (Map.Entry) it.next();
                 Parameters p = (Parameters) me.getKey();
+                String fik = p.getField();
+                String eleee = ele.attr("title");
                 if (p.getField().trim().equals(ele.attr("title").trim())) {
 
                     //System.out.println("--matching attr=" + ele.attr("title"));
@@ -295,6 +303,7 @@ public class ParamWriter {
          ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("writeparam('" + htmldoc.getElementById("paramcontainer").html() + "')");
          System.out.println("--its new");*/
         save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc.toString());
+        save(new File(IDSUtils.getActiveFilePath()), htmldoc.toString());
         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
     }
 
@@ -358,6 +367,7 @@ public class ParamWriter {
                                             isFound = false;
                                             needinsertreg = false;
                                             save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc2.toString());
+                                            save(new File(IDSUtils.getActiveFilePath()), htmldoc2.toString());
                                             ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
                                             break;
                                         } else {
@@ -383,6 +393,7 @@ public class ParamWriter {
                                     isFound = false;
                                     needinsertreg = false;
                                     save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc2.toString());
+                                    save(new File(IDSUtils.getActiveFilePath()), htmldoc2.toString());
                                     ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
                                     break;
 
@@ -446,6 +457,7 @@ public class ParamWriter {
                         }
 
                         save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc2.toString());
+                        save(new File(IDSUtils.getActiveFilePath()), htmldoc2.toString());
                         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
                     }
                 }
@@ -496,9 +508,11 @@ public class ParamWriter {
     static int count = 0;
 
     public void writeParam(File yamlFile) {
+        currYAMLFile = yamlFile.getAbsolutePath();
+
         YamlParser parser = new YamlParser();
         ArrayList<Parameters> params = parser.readYamlData(yamlFile);
-        //System.out.println("--yaml length=" + params.size());
+        System.out.println("--param length=" + params.size());
 
         LocationOptimizer ob = new LocationOptimizer();
         ArrayList<Registers> registers = ob.optimizeLocation(params);

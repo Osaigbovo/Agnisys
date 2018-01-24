@@ -177,7 +177,10 @@ public class IDSToolbarController implements Initializable {
 //        System.out.println("testGit start");
 
         ParamWriter param = new ParamWriter();
-        param.updateParam();
+        File yamlFIle = ApplicationMainGUIController.APPLICATION_OBJECT.fileChooser();
+        if (yamlFIle != null) {
+            param.updateParam(yamlFIle);
+        }
     }
 
     @FXML
