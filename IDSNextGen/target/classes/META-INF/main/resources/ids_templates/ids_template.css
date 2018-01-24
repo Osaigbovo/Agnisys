@@ -1,3 +1,8 @@
+.disablecell{
+	background-color:  #e4e4e4;
+	-webkit-user-modify: read-only !important;
+}
+
 .refpathtd{
 	padding: 0;
 	padding-left: 0 !important;
