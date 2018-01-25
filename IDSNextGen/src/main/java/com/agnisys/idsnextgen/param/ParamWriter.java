@@ -9,6 +9,7 @@ import static com.agnisys.idsnextgen.backannotation.BackAnnotation.save;
 import com.agnisys.idsnextgen.controllers.ApplicationMainGUIController;
 import com.agnisys.idsnextgen.global.IDSUtils;
 import com.agnisys.matlabparameter.LocationOptimizer;
+import com.agnisys.matlabparameter.model.ParamCategory;
 import com.agnisys.matlabparameter.model.Parameters;
 import com.agnisys.matlabparameter.model.Registers;
 import com.agnisys.matlabparameter.yamlparser.YamlDiff;
@@ -483,10 +484,31 @@ public class ParamWriter {
         return paramDiff;
     }
 
+    private ArrayList<ParamCategory> getCategoryList() {
+        ArrayList<ParamCategory> ob = new ArrayList<>();
+        ParamCategory parm;
+
+        parm = new ParamCategory("volatile", "rw", "ro", "0", "");
+        ob.add(parm);
+
+        parm = new ParamCategory("shadow", "rw", "rw", "0", "");
+        ob.add(parm);
+
+        parm = new ParamCategory("eeprom", "rw", "ro", "0", "");
+        ob.add(parm);
+
+        return ob;
+    }
+
     static int count = 0;
 
-    private void getaccess(String categoryName) {
-
+    private ParamCategory getaccess(String categoryName, ArrayList<ParamCategory> paramcats) {
+        for (ParamCategory parm : paramcats) {
+            if (categoryName.equals(parm.getCategory())) {
+                return parm;
+            }
+        }
+        return null;
     }
 
     public void writeParam(File yamlFile) {
@@ -498,6 +520,7 @@ public class ParamWriter {
 
         LocationOptimizer ob = new LocationOptimizer();
         ArrayList<Registers> registers = ob.optimizeLocation(params);
+        ArrayList<ParamCategory> paramCat = getCategoryList();
 //        System.out.println("--registers length=" + registers.size());
         String temp;
         String str = "";
@@ -505,6 +528,7 @@ public class ParamWriter {
         String row2;
         count = 0;
         String reggroup = "";
+
         for (Registers regg : registers) {
 
             int totalbits = 0;
@@ -513,8 +537,17 @@ public class ParamWriter {
 
             for (Parameters par : regg.getFields()) {
                 if (par != null) {
+                    ParamCategory cat = getaccess(par.getType(), paramCat);
+                    String sw = "";
+                    String hw = "";
+                    String def = "";
 
-                    row2 += "<td class=\"droptarget\" colspan=\"" + par.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-size=\"" + par.getOffset() + "\" data-name=\"" + par.getField() + "\" data-desc=\"" + par.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + par.getField() + "\">" + par.getOffset() + "</p></td>";
+                    if (cat != null) {
+                        sw = cat.getSw();
+                        hw = cat.getHw();
+                        def = cat.getDef();
+                    }
+                    row2 += "<td class=\"droptarget\" colspan=\"" + par.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-default=\"" + def + "\" data-sw=\"" + sw + "\" data-hw=\"" + hw + "\" data-size=\"" + par.getOffset() + "\" data-name=\"" + par.getField() + "\" data-desc=\"" + par.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + par.getField() + "\">" + par.getOffset() + "</p></td>";
                     totalbits += Integer.parseInt(par.getOffset());
                     count++;
                     /*

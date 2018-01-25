@@ -664,15 +664,24 @@ public class ApplicationMainGUIController implements Initializable {
                         //setText((empty || item == null) ? "" : item.getName().replace(".html", ""));
                         setText((empty || item == null) ? "" : item.getName());
 
-                        /*
-                         //code to set icon on tree node
-                         Node img = new ImageView(new Image(IDSNextGen.class.getResourceAsStream("/images/ids16.png")));
-                         if (item != null && empty != true) {
-                         setGraphic(img);
-                         } else {
-                         setGraphic(null);
-                         }
-                         */
+                        //code to set icon on tree node
+                        if (item != null && empty != true) {
+                            Node img;
+                            if (item.isDirectory()) {
+                                img = new ImageView(new Image(IDSNextGen.class.getResourceAsStream("/images/dir.png")));
+                            } else {
+                                if (item.getName().endsWith(".idsng")) {
+                                    img = new ImageView(new Image(IDSNextGen.class.getResourceAsStream("/images/ids10.png")));
+                                } else {
+                                    img = new ImageView(new Image(IDSNextGen.class.getResourceAsStream("/images/file.png")));
+                                }
+                            }
+                            setGraphic(img);
+
+                        } else {
+                            setGraphic(null);
+                        }
+
                     }
 
                 };
