@@ -2,6 +2,11 @@
  * Empty Stylesheet file.
  */
 
+
+.label{
+    -fx-font-weight:bold;
+    -fx-font-size:12px;
+}
 .mainFxmlClass {
     -fx-background-color:#5C7EC4;
 }
