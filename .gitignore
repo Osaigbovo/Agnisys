@@ -3,3 +3,6 @@
 *.jar
 *.jar
 IDSNextGen/target/IDSNextGen.jar
+IDSNextGen/target/classes/META-INF/main/resources/ids_templates/DashBoard.html
+*.jar
+IDSNextGen/target/IDSNextGen.jar
