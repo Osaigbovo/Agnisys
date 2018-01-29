@@ -524,7 +524,7 @@ public class ParamWriter {
 
         LocationOptimizer ob = new LocationOptimizer();
         ArrayList<Registers> registers = ob.optimizeLocation(params);
-        ArrayList<ParamCategory> paramCat = getCategoryList();
+        ArrayList<ParamCategory> paramCat = /*parser.getAttributes();*/ getCategoryList();
 //        System.out.println("--registers length=" + registers.size());
         String temp;
         String str = "";
