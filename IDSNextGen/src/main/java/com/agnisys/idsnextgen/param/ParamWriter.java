@@ -339,7 +339,7 @@ public class ParamWriter {
                                             deletedcell.add(j);
                                             //insert field here
                                             Element insertField = ((Element) fieldcells.get((int) deletedcell.get(0)));
-                                            insertField.html("<p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\"  draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p>");
+                                            insertField.html("<p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\"  draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getField() + "</p>");
                                             insertField.attr("style", "background-color: #d4e0e2;");
                                             insertField.attr("colspan", String.valueOf(size));
 
@@ -371,7 +371,7 @@ public class ParamWriter {
                                 Element field = (Element) fieldcells.get(j);
                                 if (!field.hasText()) {
 
-                                    field.html("<p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p>");
+                                    field.html("<p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getField() + "</p>");
                                     field.attr("style", "background-color: #d4e0e2;");
                                     isFound = false;
                                     needinsertreg = false;
@@ -409,7 +409,7 @@ public class ParamWriter {
                         String row2 = "";
                         String temp = "";
 
-                        row2 += "<td class=\"droptarget\" colspan=\"" + currparam.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getOffset() + "</p></td>";
+                        row2 += "<td class=\"droptarget\" colspan=\"" + currparam.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-size=\"" + currparam.getOffset() + "\" data-name=\"" + currparam.getField() + "\" data-desc=\"" + currparam.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + currparam.getField() + "\">" + currparam.getField() + "</p></td>";
                         totalbits += Integer.parseInt(currparam.getOffset());
 
                         int remainsize = LocationOptimizer.REG_SIZE - totalbits;
@@ -524,7 +524,7 @@ public class ParamWriter {
 
         LocationOptimizer ob = new LocationOptimizer();
         ArrayList<Registers> registers = ob.optimizeLocation(params);
-        ArrayList<ParamCategory> paramCat = getCategoryList();
+        ArrayList<ParamCategory> paramCat = /*parser.getAttributes();*/ getCategoryList();
 //        System.out.println("--registers length=" + registers.size());
         String temp;
         String str = "";
@@ -551,7 +551,7 @@ public class ParamWriter {
                         hw = cat.getHw();
                         def = cat.getDef();
                     }
-                    row2 += "<td class=\"droptarget\" colspan=\"" + par.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-default=\"" + def + "\" data-sw=\"" + sw + "\" data-hw=\"" + hw + "\" data-size=\"" + par.getOffset() + "\" data-name=\"" + par.getField() + "\" data-desc=\"" + par.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + par.getField() + " : " + par.getOffset() + "\">" + par.getField() + " " + par.getOffset() + "</p></td>";
+                    row2 += "<td class=\"droptarget\" colspan=\"" + par.getOffset() + "\" style=\"background-color: #d4e0e2;\"><p data-default=\"" + def + "\" data-sw=\"" + sw + "\" data-hw=\"" + hw + "\" data-size=\"" + par.getOffset() + "\" data-name=\"" + par.getField() + "\" data-desc=\"" + par.getDesc() + "\" draggable=\"true\" class=\"dragtarget\" id=\"dragtarget" + count + "\" title=\"" + par.getField() + " : " + par.getOffset() + "\">" + par.getField() + "</p></td>";
                     totalbits += Integer.parseInt(par.getOffset());
                     count++;
                     /*
