@@ -6,6 +6,7 @@
 package com.agnisys.idsnextgen.param;
 
 import static com.agnisys.idsnextgen.backannotation.BackAnnotation.save;
+import com.agnisys.idsnextgen.classes.WebController;
 import com.agnisys.idsnextgen.controllers.ApplicationMainGUIController;
 import com.agnisys.idsnextgen.global.IDSUtils;
 import com.agnisys.matlabparameter.LocationOptimizer;
@@ -68,7 +69,7 @@ public class ParamWriter {
         save(new File(IDSUtils.getActiveFilePath()), htmldoc.toString());
 //        System.out.println(htmldoc.toString());
         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
-
+        WebController.setUnsaveSymbol();
         // System.out.println("--param=" + ParamDiv.toString());
         //ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("updateParamView('" + ParamDiv.toString() + "')");
     }
@@ -164,7 +165,7 @@ public class ParamWriter {
         str += "<table class=\"endreggroup idsTemp\" id=\"tab1\"><tbody><tr class=\"label\"><td>End RegGroup</td></tbody></table> <br>";
 //        ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("regviewupdate('" + str + "')");
         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("regviewupdate('" + str + "')");
-
+        WebController.setUnsaveSymbol();
     }
 
     private String insertReg(Element ele) {
@@ -245,9 +246,7 @@ public class ParamWriter {
             while (it.hasNext()) {
                 Map.Entry me = (Map.Entry) it.next();
                 Parameters p = (Parameters) me.getKey();
-                String fik = p.getField();
-                String eleee = ele.attr("title");
-                if (p.getField().trim().equals(ele.attr("title").trim())) {
+                if (p.getField().trim().equals(ele.attr("data-name").trim())) {
 
                     //System.out.println("--matching attr=" + ele.attr("title"));
                     ele.parent().attr("style", "background-color:white");
@@ -269,7 +268,8 @@ public class ParamWriter {
         List<CheckBox> chklist = new ArrayList<>();
         while (it.hasNext()) {
             Map.Entry me = (Map.Entry) it.next();
-            Parameters p = (Parameters) me.getKey();
+            Parameters p = (Parameters) me.getValue();
+
             /*
              str += "<tr><td><input type=\"checkbox\"></td><td>" + p.getField() + "</td></tr>";*/
             CheckBox chk = new CheckBox(p.getField());
@@ -277,7 +277,7 @@ public class ParamWriter {
             chk.setOnAction((e) -> {
                 clickOnDiff(e);
             });
-            chk.setTooltip(new Tooltip("name : " + p.getField() + "\noffset : " + p.getOffset() + "\ntype : " + p.getType() + "\ndesc : " + p.getDesc()));
+            chk.setTooltip(new Tooltip("name : " + p.getField() + "\nsize : " + p.getOffset() + "\ntype : " + p.getType() + "\ndesc : " + p.getDesc()));
             ApplicationMainGUIController.APPLICATION_OBJECT.vboxhelp.getChildren().add(chk);
         }
         //ApplicationMainGUIController.APPLICATION_OBJECT.pnhelp.getChildren().addAll(chklist);
@@ -288,24 +288,24 @@ public class ParamWriter {
         save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc.toString());
         save(new File(IDSUtils.getActiveFilePath()), htmldoc.toString());
         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
+        WebController.setUnsaveSymbol();
     }
 
     private void clickOnDiff(Event e) {
         CheckBox chk = (CheckBox) e.getSource();
-        if (chk.isSelected()) {
-            System.out.println("--selected");
+        String htmlContents = Transformer.readFileAsString(IDSUtils.getActiveOrgFilePath());
+        Document htmldoc2 = Jsoup.parse(htmlContents);
 
-            String htmlContents = Transformer.readFileAsString(IDSUtils.getActiveOrgFilePath());
-            Document htmldoc2 = Jsoup.parse(htmlContents);
+        if (htmldoc2 != null && paramDiff != null) {
+            if (chk.isSelected()) {
 
-            if (htmldoc2 != null && paramDiff != null) {
                 Set entryset = paramDiff.entrySet();
                 Iterator it;
                 it = entryset.iterator();
                 Parameters currparam = null;
                 while (it.hasNext()) {
                     Map.Entry me = (Map.Entry) it.next();
-                    Parameters p = (Parameters) me.getKey();
+                    Parameters p = (Parameters) me.getValue();
                     if (p.getField().equals(chk.getId())) {
                         currparam = p;
                         break;
@@ -326,7 +326,8 @@ public class ParamWriter {
                             boolean isoccupy = false;
                             ArrayList deletedcell = new ArrayList<>();
                             int regcounter = 1;
-                            for (int j = 0; j < fieldcells.size(); j++) {
+                            //for (int j = 0; j < fieldcells.size(); j++)
+                            for (int j = fieldcells.size() - 1; j >= 0; j--) {
                                 Element field = (Element) fieldcells.get(j);
                                 if (!field.hasText()) {
                                     //cell is blank
@@ -367,7 +368,8 @@ public class ParamWriter {
                             }
 
                         } else {
-                            for (int j = 0; j < fieldcells.size(); j++) {
+                            //for (int j = 0; j < fieldcells.size(); j++)
+                            for (int j = fieldcells.size() - 1; j >= 0; j--) {
                                 Element field = (Element) fieldcells.get(j);
                                 if (!field.hasText()) {
 
@@ -439,13 +441,29 @@ public class ParamWriter {
                             ele3.after("<br>" + temp);
                         }
 
-                        save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc2.toString());
-                        save(new File(IDSUtils.getActiveFilePath()), htmldoc2.toString());
-                        ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
                     }
                 }
+
+            } else {
+                String paramName = chk.getId();
+                Element paramele = htmldoc2.getElementsByAttributeValue("data-name", paramName).get(0);
+                int size = Integer.parseInt(paramele.attr("data-size"));
+                if (size > 1) {
+                    for (int i = 0; i < size - 1; i++) {
+                        paramele.parent().after("<td class=\"droptarget\"></td>");
+                    }
+                    paramele.parent().attr("colspan", "1");
+                }
+
+                paramele.parent().attr("style", "background-color:white");
+                paramele.remove();
             }
+
+            save(new File(IDSUtils.getActiveOrgFilePath()), htmldoc2.toString());
+            save(new File(IDSUtils.getActiveFilePath()), htmldoc2.toString());
+            ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("reloadPage()");
         }
+        //WebController.setUnsaveSymbol();
     }
 
     private boolean insertField(Parameters param, Document doc) {
@@ -600,6 +618,7 @@ public class ParamWriter {
 
         ApplicationMainGUIController.APPLICATION_OBJECT.vboxhelp.getChildren().clear();
 
+        WebController.setUnsaveSymbol();
         /*
          IDSUtils.saveCurrentWebViewFile();
          onRegisterView();
