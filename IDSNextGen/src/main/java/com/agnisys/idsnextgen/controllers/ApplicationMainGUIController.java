@@ -1265,7 +1265,8 @@ public class ApplicationMainGUIController implements Initializable {
                          tab.setContent(IDSHtmlEditor.getHTMLEditor());
                          HTMLEditorInstances.getHTMLInstances().addHTMLEditor(IDSHtmlEditor);
                          */
-                        tab.setText(FilenameUtils.removeExtension(file.getName()));
+                        //tab.setText(FilenameUtils.removeExtension(file.getName()));
+                        tab.setText(file.getName());
                         openIDSNGFileInWebView(tab, file.getAbsolutePath());
                         //resetFileViews((((WebView) tab.getContent())).getEngine(), SHOWPROP);
                         //(tab, "C:/Users/Agnisys/Desktop/GUI demo/test/wysiwyg-editor-master/html/events/image_removed.html");

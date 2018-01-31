@@ -600,5 +600,10 @@ public class ParamWriter {
 
         ApplicationMainGUIController.APPLICATION_OBJECT.vboxhelp.getChildren().clear();
 
+        /*
+         IDSUtils.saveCurrentWebViewFile();
+         onRegisterView();
+         ApplicationMainGUIController.APPLICATION_OBJECT.getActiveWebEngine().executeScript("showParamView()");
+         */
     }
 }

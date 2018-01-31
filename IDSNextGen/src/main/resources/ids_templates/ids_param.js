@@ -1,4 +1,9 @@
-function hideregview() {
+function showParamView() {
+					document.getElementById("paramcontainer").style.display = "block";
+					document.getElementById("regdivcontainer").style.display = "none";
+				}
+
+				function hideregview() {
 					document.getElementById("paramcontainer").style.display = "block";
 					document.getElementById("regdivcontainer").style.display = "none";
 				}
