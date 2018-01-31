@@ -27,7 +27,7 @@ public class AboutController implements Initializable {
     @FXML
     Label lblLicensePath;
 
-    public final static String VERSION = "1.1.6";
+    public final static String VERSION = "1.2.0";
     final String LIC_Status = "Active.";
 
     /**
