@@ -30,33 +30,18 @@
       -->
       <Menu fx:id="menuFile" mnemonicParsing="false">
          <items>
-            <Menu fx:id="menuFileNew" mnemonicParsing="false">
-               <items>
-                  <Menu fx:id="menuFileNewProj" mnemonicParsing="false">
-                    <items>
-                      <MenuItem fx:id="menuItmCreateProj" mnemonicParsing="false" onAction="#click_CreateNewProject" />
-                    </items>
-                  </Menu>
-                  <Menu fx:id="menuFileNewFile" mnemonicParsing="false">
-                    <items>
-                        <MenuItem fx:id="menuItmNewIP" mnemonicParsing="false" onAction="#click_IPWizard" />
-                        <MenuItem fx:id="menuItmNewReg" mnemonicParsing="false" onAction="#click_NewRegFileWizard" />
-                        <MenuItem fx:id="menuItmNewText" mnemonicParsing="false" onAction="#click_NewTextFileWizard" />
-                        <MenuItem mnemonicParsing="false" onAction="#click_parameters" text="Parameters" />
-                        <!--<MenuItem fx:id="menuItmNewCanvas" disable="true" mnemonicParsing="false" />-->
-                    </items>
-                  </Menu>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="menuItmFolder" mnemonicParsing="false" onAction="#click_NewFolderWizard" />
-               </items>
-            </Menu>
-            <MenuItem mnemonicParsing="false" onAction="#click_addIP" text="Add IP" />
-            <Menu fx:id="menuOpen" mnemonicParsing="false">
+          <MenuItem fx:id="menuItmCreateProj" mnemonicParsing="false" onAction="#click_CreateNewProject" />
+            <Menu fx:id="menuFileNewFile" mnemonicParsing="false">
               <items>
-                <MenuItem fx:id="menuItmOpenProj" mnemonicParsing="false" onAction="#click_openProject" />
-                  <MenuItem fx:id="menuItmOpenFile" mnemonicParsing="false" onAction="#click_OpenFile" />
+                  <MenuItem fx:id="menuItmNewIP" mnemonicParsing="false" onAction="#click_IPWizard" />
+                  <MenuItem fx:id="menuItmNewReg" mnemonicParsing="false" onAction="#click_NewRegFileWizard" />
+                  <MenuItem fx:id="menuItmNewText" mnemonicParsing="false" onAction="#click_NewTextFileWizard" />
+                  <MenuItem mnemonicParsing="false" onAction="#click_parameters" text="Parameters" />
+                  <!--<MenuItem fx:id="menuItmNewCanvas" disable="true" mnemonicParsing="false" />-->
               </items>
             </Menu>
+          <MenuItem fx:id="menuItmOpenProj" mnemonicParsing="false" onAction="#click_openProject" />
+            <MenuItem fx:id="menuItmOpenFile" mnemonicParsing="false" onAction="#click_OpenFile" />
 <!--            <MenuItem fx:id="menuItmCloseProj" disable="true" mnemonicParsing="false" />-->
 <!--            <MenuItem fx:id="menuItmImportProj" disable="true" mnemonicParsing="false" />
             <MenuItem fx:id="menuItmExportProj" disable="true" mnemonicParsing="false" />

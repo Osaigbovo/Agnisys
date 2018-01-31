@@ -24,16 +24,16 @@ public class IDSString {
 
     public static final String MENU_FILE_NEW = "New";
     public static final String MENU_FILE_NEW_PROJ = "Project";
-    public static final String MENU_CREATE_PROJ = "Create Project";
-    public static final String MENU_NEW_FILE = "File";
+    public static final String MENU_CREATE_PROJ = "New Project...";
+    public static final String MENU_NEW_FILE = "New File";
     public static final String MENU_NEW_IP = "Create IP";
     public static final String MENU_NEW_REG = "Register Spec";
     public static final String MENU_NEW_TEXT = "Text File";
     public static final String MENU_NEW_CANVAS = "Canvas";
 
     public static final String MENU_OPEN = "Open";
-    public static final String MENU_OPEN_PROJ = "Project";
-    public static final String MENU_OPEN_FILE = "File";
+    public static final String MENU_OPEN_PROJ = "Open Project...";
+    public static final String MENU_OPEN_FILE = "Open File...";
     public static final String MENU_CLOSE_PROJ = "Close Project";
     public static final String MENU_IMPORT_PROJ = "Import Project";
     public static final String MENU_EXPORT_PROJ = "Export Project";
