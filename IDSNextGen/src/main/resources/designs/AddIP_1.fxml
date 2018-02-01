@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -16,10 +16,10 @@
                <children>
                   <Label layoutX="21.0" layoutY="27.0" text="Add from" textFill="#fcf7f7" />
                   <Label layoutX="22.0" layoutY="66.0" text="Store to" textFill="#fcf7f7" />
-                  <TextField fx:id="txtAddFrom" layoutX="91.0" layoutY="23.0" prefHeight="25.0" prefWidth="393.0" />
-                  <TextField fx:id="txtStoreTo" layoutX="91.0" layoutY="64.0" prefHeight="25.0" prefWidth="393.0" />
+                  <JFXTextField focusColor="#b3b5b9" layoutX="91.0" layoutY="23.0" prefWidth="393.0" />
                   <JFXButton layoutX="496.0" layoutY="23.0" ripplerFill="#948f97" style="-fx-background-color: #1B6CD7; -fx-background-radius: 0.5em;" textAlignment="CENTER" textFill="WHITE" />
                   <JFXButton layoutX="496.0" layoutY="64.0" ripplerFill="#948f97" style="-fx-background-color: #1B6CD7; -fx-background-radius: 0.5em;" textAlignment="CENTER" textFill="WHITE" />
+                  <JFXTextField focusColor="#b3b5b9" layoutX="91.0" layoutY="64.0" prefWidth="393.0" />
                </children>
             </Pane>
          </center>

@@ -8,7 +8,7 @@
    <children>
       <Pane layoutY="1.0" prefHeight="114.0" prefWidth="446.0">
          <children>
-            <Label fx:id="lblAbout" layoutX="7.0" layoutY="6.0" prefHeight="102.0" prefWidth="434.0" textFill="WHITE" />
+            <Label fx:id="lblAbout" layoutX="7.0" layoutY="6.0" prefHeight="102.0" prefWidth="434.0" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
          </children>
       </Pane>
       <Pane layoutX="27.0" layoutY="142.0" prefHeight="229.0" prefWidth="393.0" styleClass="panelic">

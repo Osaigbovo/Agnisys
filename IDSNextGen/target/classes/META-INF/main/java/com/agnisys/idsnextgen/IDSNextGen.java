@@ -68,7 +68,7 @@ public class IDSNextGen extends Application {
         stage.setScene(scene);
         stage.setTitle(idsString.get_APPLICATION_TITLE());
         //stage.setResizable(false);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.DECORATED);
 
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
