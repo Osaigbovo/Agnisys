@@ -28,7 +28,7 @@
 	font-size: 11px;	
 }
 .idsTemp{
-	//background-color:red;
+/*	//background-color:red;*/
 }
 .splitVer{
 	height: 10px;
@@ -79,6 +79,14 @@ table, th, td {
 /*
  * Empty Stylesheet file.
  */
+
+.gradient{
+    -fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#31445A,#298DC5);
+}
+
+.gradient-light{
+    -fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#2F526F,#2C73A0);
+}
 
 .treeview{
     -fx-font-size:4

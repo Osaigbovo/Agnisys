@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.AddIPController">
+   <children>
+      <BorderPane layoutX="146.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0, 170, 190, 0.9);" stylesheets="@../styles/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="21.0" layoutY="27.0" text="Add from" textFill="#fcf7f7" />
+                  <Label layoutX="22.0" layoutY="66.0" text="Store to" textFill="#fcf7f7" />
+                  <TextField fx:id="txtAddFrom" layoutX="91.0" layoutY="23.0" prefHeight="25.0" prefWidth="393.0" />
+                  <TextField fx:id="txtStoreTo" layoutX="91.0" layoutY="64.0" prefHeight="25.0" prefWidth="393.0" />
+                  <JFXButton layoutX="496.0" layoutY="23.0" ripplerFill="#948f97" style="-fx-background-color: #1B6CD7; -fx-background-radius: 0.5em;" textAlignment="CENTER" textFill="WHITE" />
+                  <JFXButton layoutX="496.0" layoutY="64.0" ripplerFill="#948f97" style="-fx-background-color: #1B6CD7; -fx-background-radius: 0.5em;" textAlignment="CENTER" textFill="WHITE" />
+               </children>
+            </Pane>
+         </center>
+         <top>
+            <Pane prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lblWizardTitle" layoutX="14.0" layoutY="10.0" text="Add IP" textFill="#fcf7f7">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="45.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton layoutX="392.0" layoutY="10.0" onAction="#click_AddFile" prefHeight="20.0" prefWidth="90.0" style="-fx-border-color: #1B6CD7; -fx-border-radius: 5em; -fx-background-color: white; -fx-background-radius: 5em;" text="Add" />
+                  <JFXButton fx:id="btnCancel" layoutX="496.0" layoutY="10.0" onAction="#closeButtonAction" prefHeight="20.0" prefWidth="90.0" style="-fx-border-color: #1B6CD7; -fx-border-radius: 5em; -fx-background-color: #1B6CD7; -fx-background-radius: 5em;" text="Cancel" textFill="#f5f5f5" />
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

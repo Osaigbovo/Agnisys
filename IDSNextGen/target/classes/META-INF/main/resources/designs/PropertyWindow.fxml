@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="455.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.102" fx:controller="com.agnisys.idsnextgen.controllers.PropertyWindowController">
+<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="455.0" style="-fx-background-color: rgb(0, 170, 190, 0.9);" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.PropertyWindowController">
    <children>
-      <Label fx:id="lblWizardTitle" contentDisplay="CENTER" layoutX="23.0" layoutY="20.0" text="Properties" textAlignment="CENTER">
+      <Label fx:id="lblWizardTitle" contentDisplay="CENTER" layoutX="23.0" layoutY="20.0" text="Properties" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="76.0" text="File location :" />
+      <Label layoutX="23.0" layoutY="76.0" text="File location :" textFill="WHITE" />
       <Button fx:id="btnCancel" layoutX="381.0" layoutY="366.0" mnemonicParsing="false" onAction="#click_btnClose" text="Close" />
       <TextField fx:id="lblFileLocation" editable="false" layoutX="114.0" layoutY="73.0" prefHeight="25.0" prefWidth="319.0" />
    </children>

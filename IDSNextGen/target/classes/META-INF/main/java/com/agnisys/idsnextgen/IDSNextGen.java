@@ -55,6 +55,8 @@ public class IDSNextGen extends Application {
         loadProjConfig(defaultProjPath);
         System.out.println("--Project Loaded Successfully");
         Parent root = FXMLLoader.load(getClass().getResource("/designs/ApplicationMainGUI.fxml"));
+        
+        //Parent root = FXMLLoader.load(getClass().getResource("/designs/ApplicationMainGUI_2.fxml"));
 
         //Scene scene = new Scene(root);
         int wid = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -66,7 +68,7 @@ public class IDSNextGen extends Application {
         stage.setScene(scene);
         stage.setTitle(idsString.get_APPLICATION_TITLE());
         //stage.setResizable(false);
-        stage.initStyle(StageStyle.DECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
 
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();

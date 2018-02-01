@@ -215,5 +215,23 @@
             <artifactId>MatlabParameter</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.fontawesomefx</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.9</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.controlfx</groupId>
+            <artifactId>controlfx</artifactId>
+            <version>8.40.13</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
