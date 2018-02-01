@@ -3,7 +3,7 @@
  */
 
 .mainFxmlClass {
-    //-fx-background-color:red;
+    /*    //-fx-background-color:red;*/
 }
 
 .pane , .txtArea{
@@ -13,7 +13,7 @@
 .mainChildContainer{
     -fx-pref-height:452;
     -fx-pref-width:559;
-    
+
 }
 
 .innerContainer{

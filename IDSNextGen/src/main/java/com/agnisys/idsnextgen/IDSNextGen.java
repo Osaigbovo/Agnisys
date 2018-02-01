@@ -55,6 +55,8 @@ public class IDSNextGen extends Application {
         loadProjConfig(defaultProjPath);
         System.out.println("--Project Loaded Successfully");
         Parent root = FXMLLoader.load(getClass().getResource("/designs/ApplicationMainGUI.fxml"));
+        
+        //Parent root = FXMLLoader.load(getClass().getResource("/designs/ApplicationMainGUI_2.fxml"));
 
         //Scene scene = new Scene(root);
         int wid = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;

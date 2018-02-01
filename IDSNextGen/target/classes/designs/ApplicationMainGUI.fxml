@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.ApplicationMainGUIController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.ApplicationMainGUIController">
     <stylesheets>
         <URL value="@../styles/applicationmaingui.css" />
     </stylesheets>
@@ -190,7 +190,7 @@
          <left>
             <Pane prefHeight="595.0" prefWidth="23.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnOpnProjecExp" layoutX="-30.0" layoutY="31.0" mnemonicParsing="false" onAction="#click_btnOpnProjecExp" rotate="-90.0" text="Project Explorer">
+                  <Button fx:id="btnOpnProjecExp" layoutX="-30.0" layoutY="31.0" mnemonicParsing="false" onAction="#click_btnOpnProjecExp" rotate="-90.0" styleClass="arrow-button" stylesheets="@../styles/style.css" text="Project Explorer">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
