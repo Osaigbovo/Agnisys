@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
+
+<AnchorPane fx:id="outer" prefHeight="650.0" prefWidth="1100.0" styleClass="gradient" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.ApplicationMainGUIController">
+    <effect>
+        <DropShadow blurType="GAUSSIAN" height="27.0" radius="13.0" spread="0.43" width="27.0" />
+    </effect>
+    <children>
+        <AnchorPane prefHeight="650.0" prefWidth="250.0" styleClass="menus" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <effect>
+                <DropShadow />
+            </effect>
+         <children>
+            <TabPane layoutX="45.0" layoutY="170.0" prefHeight="479.0" prefWidth="155.0" side="LEFT" styleClass="jfx-tab-pane" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+              <tabs>
+                <Tab text="Project Explorer">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TitledPane animated="false" prefHeight="479.0" prefWidth="129.0" styleClass="titledPane" stylesheets="@style.css" text="Project Explorer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+        </AnchorPane>
+        
+        
+        <AnchorPane opacity="0.95" prefHeight="110.0" prefWidth="1100.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-border-width: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="36.0" prefWidth="240.0" text="IDesignSpec NG" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                    <effect>
+                        <Reflection fraction="0.58" topOpacity="0.57" />
+                    </effect>
+                </Label>
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="203.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icona/icon_trademark.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="btn_menu" fitHeight="30.0" fitWidth="30.0" layoutX="1035.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
+                    <image>
+                        <Image url="@../images/icona/icon_menu.png" />
+                    </image>
+                </ImageView>
+            <AnchorPane layoutY="86.0" prefHeight="60.0" prefWidth="207.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+               <children>
+                  <JFXToolbar layoutX="303.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <MenuBar BorderPane.alignment="CENTER">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Edit">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Help">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                     </top>
+                     <center>
+                        <AnchorPane prefHeight="50.0" style="-fx-background-color: #31445A;" BorderPane.alignment="CENTER">
+                           <children>
+                              <JFXButton alignment="CENTER" layoutX="10.0" mnemonicParsing="false" prefHeight="34.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Configure" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="0.0">
+                                 <graphic>
+                                    <ImageView fx:id="configure12" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_configure.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Configure" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="20.0" layoutY="30.0" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="OutDir" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="30.0">
+                                 <graphic>
+                                    <ImageView fx:id="configure2" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_open.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Out Dir" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="180.0" layoutY="30.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Reg" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_reg.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Reg" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="110.0" layoutY="30.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Block" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="110.0">
+                                 <graphic>
+                                    <ImageView fx:id="settings2" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="image" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_block.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Block" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="275.0" layoutY="2.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Ref" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_ref.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Ref" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="180.0" layoutY="3.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="RegGroup" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="3.0">
+                                 <graphic>
+                                    <ImageView fx:id="settings11" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="image" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_reg_group.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="RegGroup" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="110.0" layoutY="3.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Chip" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="3.0">
+                                 <graphic>
+                                    <ImageView fx:id="configure111" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_chip.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Chip" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="525.0" layoutY="3.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="BusDomain" textFill="#fcf8f8" wrapText="true" AnchorPane.leftAnchor="525.0" AnchorPane.topAnchor="3.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_domain.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Bus Domain" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="275.0" layoutY="30.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Memory" textFill="#fcf8f8" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_memory.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Memory" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="360.0" layoutY="30.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Define" textFill="#fcf8f8" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_define.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Define" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="635.0" layoutY="1.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Check" textFill="#fcf8f8" wrapText="true" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="635.0" AnchorPane.topAnchor="1.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_check.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Check" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="525.0" layoutY="30.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Signal" textFill="#fcf8f8" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="525.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_signal.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Signal" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="360.0" layoutY="4.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Enum" textFill="#fcf8f8" wrapText="true" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="4.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_enum.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Enum" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="440.0" layoutY="4.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Variant" textFill="#fcf8f8" wrapText="true" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="4.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                       <image>
+                                          <Image url="@../images/icona/icon_variant.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Variant" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="740.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Import Param" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="740.0" AnchorPane.topAnchor="0.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_import_param.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Import Param" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="635.0" layoutY="26.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Generate" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="635.0" AnchorPane.topAnchor="26.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_generate.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Generate" />
+                                 </tooltip>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" layoutX="740.0" layoutY="30.0" mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Update Param" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="740.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icona/icon_update.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Update Param" />
+                                 </tooltip>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </JFXToolbar>
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="dash_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="155.0">
+            <children>
+                <AnchorPane layoutX="569.0" layoutY="52.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0">
+                    <effect>
+                        <DropShadow height="7.5" radius="3.25" width="7.5" />
+                    </effect>
+                    <children>
+                        <Accordion AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <panes>
+                                <TitledPane expanded="false" prefWidth="216.0" styleClass="titledPane" stylesheets="@style.css" text="Hierarchical View" textAlignment="CENTER">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
+                                    </content>
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </TitledPane>
+                                <TitledPane expanded="false" prefWidth="216.0" styleClass="titledPane" stylesheets="@style.css" text="Console" textAlignment="CENTER">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
+                                    </content>
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </TitledPane>
+                                <TitledPane expanded="false" prefWidth="216.0" styleClass="titledPane" stylesheets="@style.css" text="Graphical View" textAlignment="CENTER">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
+                                    </content>
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </TitledPane>
+                            </panes>
+                        </Accordion>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="25.0" layoutY="448.0" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 4; -fx-background-color: rgb(0, 170, 207,0.9); -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);" stylesheets="@style.css" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="28.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="10.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_italic.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="129.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="129.0" AnchorPane.topAnchor="9.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_super.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="76.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="76.0" AnchorPane.topAnchor="10.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_strike.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="103.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="11.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_sub.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="50.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_underline.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_bold.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="172.0" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: rgb(0, 179, 160,0.9); -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);" AnchorPane.leftAnchor="172.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <ComboBox layoutX="4.0" layoutY="9.0" prefWidth="55.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="9.0" />
+                        <ComboBox layoutX="61.0" layoutY="9.0" prefWidth="85.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="9.0" />
+                        <ComboBox layoutX="148.0" layoutY="9.0" AnchorPane.leftAnchor="148.0" AnchorPane.topAnchor="9.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="378.0" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 4; -fx-background-color: rgb(0, 170, 207,0.9); -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);" stylesheets="@style.css" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="9.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_left.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="39.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="12.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_center.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="98.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="9.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_right.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="68.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="11.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_justify.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="133.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="11.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_bullet.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="159.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="159.0" AnchorPane.topAnchor="9.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_number.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="569.0" prefHeight="40.0" prefWidth="245.0" style="-fx-background-color: rgb(0, 179, 160,0.9); -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);" AnchorPane.leftAnchor="569.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <CustomTextField fx:id="fieldSearch" layoutX="113.0" layoutY="8.0" prefWidth="100.0" styleClass="searchField" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="8.0">
+                            <left>
+                                <Label styleClass="searchBoxLabel">
+                                    <graphic>
+                                        <FontAwesomeIconView styleClass="searchBoxLabelIcon" />
+                                    </graphic>
+                                </Label>
+                            </left>
+                        </CustomTextField>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="63.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="13.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_trash.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="87.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="12.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_insert.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="219.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="219.0" AnchorPane.topAnchor="12.0">
+                            <image>
+                                <Image url="@../images/icona/format/icon_print.png" />
+                            </image>
+                        </ImageView>
+                  <ComboBox layoutX="7.0" layoutY="9.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="9.0" />
+                    </children>
+                </AnchorPane>
+            <AnchorPane layoutY="43.0" prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="43.0">
+               <children>
+                  <JFXTabPane fx:id="tabPane" layoutX="7.0" layoutY="2.0" styleClass="jfx-tab-pane" stylesheets="@style.css" tabClosingPolicy="SELECTED_TAB" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="2.0">
+                     <tabs>
+                        <Tab text="Dashboard">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="card" />
+                          </content>
+                        </Tab>
+                        <Tab text="Top">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="card" />
+                           </content>
+                        </Tab>
+                        <Tab text="Test">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="card" />
+                           </content>
+                        </Tab>
+                        <Tab text="Reg">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="card" />
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="menu_pane" layoutX="840.0" layoutY="70.0" prefHeight="34.0" prefWidth="608.0" style="-fx-background-color: #fff; -fx-background-radius: 0.5em;" visible="false" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="70.0" />
+    </children>
+   <stylesheets>
+      <URL value="@style.css" />
+      <URL value="@../styles/style.css" />
+   </stylesheets>
+</AnchorPane>

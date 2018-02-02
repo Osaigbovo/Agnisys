@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(0, 170, 190, 0.9);" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agnisys.idsnextgen.controllers.config.ConfigDatasheetController">
+    <stylesheets>
+        <URL value="@../../styles/configmain.css" />
+    </stylesheets>
+    <children>
+      <Label fx:id="lblGeneral" layoutX="24.0" layoutY="14.0" styleClass="heading" text="Settings &gt; Datasheet Preprocessor">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Pane layoutX="78.0" layoutY="58.0" prefHeight="147.0" prefWidth="441.0" styleClass="pane">
+         <children>
+            <CheckBox disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Remove Define/ Variant table" />
+            <CheckBox disable="true" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" text="Remove Properties" />
+            <CheckBox disable="true" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" text="Expand RegGroup" />
+            <CheckBox disable="true" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" text="Flatten Refs" />
+            <CheckBox disable="true" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" text="Replace Templates" />
+         </children>
+      </Pane>
+      <Label disable="true" layoutX="24.0" layoutY="242.0" text="Datasheet output file name : " />
+      <TextField disable="true" layoutX="189.0" layoutY="237.0" prefHeight="25.0" prefWidth="329.0" />
+      
+   </children>
+</AnchorPane>
