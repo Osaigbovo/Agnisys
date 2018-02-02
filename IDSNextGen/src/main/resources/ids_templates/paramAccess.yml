@@ -1,0 +1,24 @@
+attributes:
+ 
+    -  
+        Category : volatile
+        SW : rw
+        HW : ro
+        Default : "0"
+        Property: ""
+  
+    -  
+        Category : shadow
+        SW : rw
+        HW : rw
+        Default : "0"
+        Property: ""
+         
+    -  
+        Category : eeprom
+        SW : rw
+        HW : rw
+        Default : "0"
+        Property: ""
+
+  

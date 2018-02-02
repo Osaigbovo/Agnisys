@@ -24,8 +24,10 @@ public class AboutController implements Initializable {
     Label lblVersion;
     @FXML
     Label lblLicense;
+    @FXML
+    Label lblLicensePath;
 
-    public final static String VERSION = "1.1.6";
+    public final static String VERSION = "1.2.0";
     final String LIC_Status = "Active.";
 
     /**
@@ -34,9 +36,11 @@ public class AboutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         bindString();
+
     }
 
     private void bindString() {
+        lblLicensePath.setText(System.getenv("AGNI_LICENSE_FILE"));
         lblVersion.setText(VERSION);
         System.out.println("--licensestatuc=" + ApplicationMainGUIController.APPLICATION_OBJECT.licenseStatus);
         lblLicense.setText(ApplicationMainGUIController.APPLICATION_OBJECT.licenseStatus + " days");

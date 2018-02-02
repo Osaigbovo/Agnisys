@@ -67,11 +67,6 @@ public class MainMenuController implements Initializable {
     @FXML
     Menu menuHelp;
     @FXML
-
-    Menu menuFileNew;
-    @FXML
-    Menu menuFileNewProj;
-    @FXML
     MenuItem menuItmCreateProj;
     @FXML
     MenuItem menuFileNewFile;
@@ -81,11 +76,6 @@ public class MainMenuController implements Initializable {
     MenuItem menuItmNewReg;
     @FXML
     MenuItem menuItmNewText;
-//    @FXML
-//    MenuItem menuItmNewCanvas;
-
-    @FXML
-    Menu menuOpen;
     @FXML
     MenuItem menuItmOpenProj;
     @FXML
@@ -146,10 +136,7 @@ public class MainMenuController implements Initializable {
 //    MenuItem menuItmSettings;
 //    @FXML
 //    MenuItem menuItmConfiguration;
-    @FXML
-    MenuItem menuItmFolder;
     //</editor-fold>
-
     //<editor-fold defaultstate="collapsed" desc="class variables">
     public Document document = null;
     private final String SHOWDESC = " Show description";
@@ -329,8 +316,6 @@ public class MainMenuController implements Initializable {
 //        menuTools.setText(IDSString.MENU_TOOL);
 //        menuView.setText(IDSString.MENU_VIEW);
 
-        menuFileNew.setText(IDSString.MENU_FILE_NEW);
-        menuFileNewProj.setText(IDSString.MENU_FILE_NEW_PROJ);
         menuItmCreateProj.setText(IDSString.MENU_CREATE_PROJ);
         menuFileNewFile.setText(IDSString.MENU_NEW_FILE);
         menuItmNewIP.setText(IDSString.MENU_NEW_IP);
@@ -338,7 +323,6 @@ public class MainMenuController implements Initializable {
         menuItmNewText.setText(IDSString.MENU_NEW_TEXT);
 //        menuItmNewCanvas.setText(IDSString.MENU_NEW_CANVAS);
 
-        menuOpen.setText(IDSString.MENU_OPEN);
         menuItmOpenProj.setText(IDSString.MENU_OPEN_PROJ);
         menuItmOpenFile.setText(IDSString.MENU_OPEN_FILE);
 //        menuItmCloseProj.setText(IDSString.MENU_CLOSE_PROJ);
@@ -373,7 +357,6 @@ public class MainMenuController implements Initializable {
 //        menuItmRunProj.setText(IDSString.MENU_RUN_PROJ);
 //        menuItmSettings.setText(IDSString.MENU_SETTING);
 //        menuItmConfiguration.setText(IDSString.MENU_CONFIG);
-        menuItmFolder.setText(IDSNextGen.APPLICATION_OBJECT.idsString.get_MENU_FOLDER());
     }
     //</editor-fold>
 

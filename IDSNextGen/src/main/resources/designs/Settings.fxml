@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agnisystwo.SettingsController">
+    <stylesheets>
+        <URL value="@settings.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="32.0" layoutX="110.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icona/icon_settings.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="170.0" layoutY="17.0" text="Configuration Settings" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="70.0" prefHeight="530.0" prefWidth="500.0" style="-fx-background-color: #f0f2f5;">
+         <children>
+            <AnchorPane prefHeight="530.0" prefWidth="165.0" style="-fx-background-color: #3D4956;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXButton layoutX="3.0" layoutY="44.0" text="General" textAlignment="CENTER" textFill="#f8f6f6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutY="334.0" text="Advance Verification" textAlignment="CENTER" textFill="#f8f6f6" wrapText="true" AnchorPane.leftAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="30.0" layoutY="228.0" text="Formatting" textAlignment="CENTER" textFill="#f8f6f6" wrapText="true" />
+                  <JFXButton layoutX="30.0" layoutY="287.0" text="CustomCSV" textFill="#f8f6f6" />
+                  <JFXButton layoutX="30.0" layoutY="199.0" text="Variant" textAlignment="CENTER" textFill="#f8f6f6" wrapText="true" />
+                  <JFXButton layoutX="26.0" layoutY="124.0" text="User-Defined Outputs" textFill="#f8f6f6" />
+                  <JFXButton layoutX="2.0" layoutY="170.0" text="Settings" textFill="#f8f6f6" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="30.0" layoutY="258.0" text="DataSheet" textFill="#f8f6f6" />
+                  <JFXButton layoutX="3.0" layoutY="92.0" text="Output" textFill="#f8f6f6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="1.0" layoutY="384.0" text="Advance Design" textFill="#f8f6f6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <JFXButton buttonType="RAISED" layoutX="391.0" layoutY="488.0" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5em;" text="Cancel" textFill="#f5f2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <AnchorPane prefHeight="480.0" prefWidth="335.0" style="-fx-background-color: #f0f2f5;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <JFXButton buttonType="RAISED" layoutX="293.0" layoutY="487.0" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 5em; -fx-border-color: #3D4956;" text="OK" textFill="#3d4956">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
