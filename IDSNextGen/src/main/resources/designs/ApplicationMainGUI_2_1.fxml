@@ -34,13 +34,13 @@
                 <DropShadow />
             </effect>
          <children>
-            <TabPane layoutX="45.0" layoutY="170.0" prefHeight="479.0" prefWidth="155.0" side="LEFT" styleClass="jfx-tab-pane" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+            <TabPane layoutX="10.0" layoutY="170.0" prefHeight="479.0" prefWidth="155.0" side="LEFT" styleClass="jfx-tab-pane" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
               <tabs>
                 <Tab text="Project Explorer">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TitledPane animated="false" prefHeight="479.0" prefWidth="129.0" styleClass="titledPane" stylesheets="@style.css" text="Project Explorer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <TitledPane animated="false" collapsible="false" prefHeight="479.0" prefWidth="129.0" styleClass="titledPane" stylesheets="@style.css" text="Project Explorer" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                 </content>
@@ -316,7 +316,7 @@
         </AnchorPane>
         <AnchorPane fx:id="dash_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="155.0">
             <children>
-                <AnchorPane layoutX="569.0" layoutY="52.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0">
+                <AnchorPane layoutX="569.0" layoutY="52.0" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0">
                     <effect>
                         <DropShadow height="7.5" radius="3.25" width="7.5" />
                     </effect>
@@ -457,7 +457,7 @@
                 </AnchorPane>
             <AnchorPane layoutY="43.0" prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="43.0">
                <children>
-                  <JFXTabPane fx:id="tabPane" layoutX="7.0" layoutY="2.0" styleClass="jfx-tab-pane" stylesheets="@style.css" tabClosingPolicy="SELECTED_TAB" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="2.0">
+                  <JFXTabPane fx:id="tabPane" layoutX="7.0" layoutY="2.0" styleClass="jfx-tab-pane" stylesheets="@style.css" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="2.0">
                      <tabs>
                         <Tab text="Dashboard">
                           <content>
@@ -485,7 +485,6 @@
             </AnchorPane>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="menu_pane" layoutX="840.0" layoutY="70.0" prefHeight="34.0" prefWidth="608.0" style="-fx-background-color: #fff; -fx-background-radius: 0.5em;" visible="false" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="70.0" />
     </children>
    <stylesheets>
       <URL value="@style.css" />
