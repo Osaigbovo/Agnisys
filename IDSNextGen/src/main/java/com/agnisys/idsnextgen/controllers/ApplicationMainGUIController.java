@@ -771,6 +771,8 @@ public class ApplicationMainGUIController implements Initializable {
     }
     //</editor-fold>
 
+    TreeItem<File> cutFileItem = null;
+
     //<editor-fold defaultstate="collapsed" desc="tree right click menus bind">
     ContextMenu addTreeRightClickMenuItems() {
         ContextMenu contextMenu = new ContextMenu();
@@ -861,8 +863,13 @@ public class ApplicationMainGUIController implements Initializable {
         deleteFile.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                deleteFile(SELECTED_FILE);
-                refreshProject();
+                //deleteFile(SELECTED_FILE);
+                //refreshProject();
+                if (IDSUtils.deleteConfirmation()) {
+                    TreeItem c = (TreeItem) fileView.getSelectionModel().getSelectedItem();
+                    c.getParent().getChildren().remove(c);
+                    deleteFile(SELECTED_FILE);
+                }
             }
         });
 
@@ -879,6 +886,7 @@ public class ApplicationMainGUIController implements Initializable {
                 cutCopyFilePath = SELECTED_FILE;
                 paste.setDisable(false);
                 isCutSelected = true;
+                cutFileItem = (TreeItem) fileView.getSelectionModel().getSelectedItem();
             }
         });
 
@@ -897,21 +905,37 @@ public class ApplicationMainGUIController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     if (cutCopyFilePath != null) {
+                        TreeItem currentNode = (TreeItem) fileView.getSelectionModel().getSelectedItem();
                         if (cutCopyFilePath.isFile()) {
                             IDSUtils.copyFileToDir(cutCopyFilePath, SELECTED_FILE);
+                            //addFileIntoTreeView(cutCopyFilePath);
+
                             if (isCutSelected) {
+                                if (cutFileItem != null) {
+                                    fileView.getSelectionModel().select(cutFileItem);
+                                    TreeItem c = (TreeItem) fileView.getSelectionModel().getSelectedItem();
+                                    c.getParent().getChildren().remove(c);
+                                }
                                 deleteFile(cutCopyFilePath);
+                                fileView.getSelectionModel().select(currentNode);
                             }
                         } else {
                             if (isCutSelected) {
+                                if (cutFileItem != null) {
+                                    fileView.getSelectionModel().select(cutFileItem);
+                                    TreeItem c = (TreeItem) fileView.getSelectionModel().getSelectedItem();
+                                    c.getParent().getChildren().remove(c);
+                                }
                                 IDSUtils.cutFolder(cutCopyFilePath, SELECTED_FILE);
+                                fileView.getSelectionModel().select(currentNode);
                             } else {
                                 IDSUtils.copyFolder(cutCopyFilePath, SELECTED_FILE);
                             }
                         }
 
-                        refreshProjectWithIndex();
-                        //refreshProject();
+                        File newpaste = new File(SELECTED_FILE.getAbsolutePath() + File.separator + cutCopyFilePath.getName());
+                        fileView.getSelectionModel().getSelectedItem().getChildren().add(new SimpleFileTreeItem(newpaste));
+
                         paste.setDisable(true);
                         cutCopyFilePath = null;
                     }
@@ -1008,17 +1032,17 @@ public class ApplicationMainGUIController implements Initializable {
     //<editor-fold defaultstate="collapsed" desc="delete file or folder">
     public void deleteFile(File file) {
         try {
-            if (IDSUtils.deleteConfirmation()) {
-                if (file.isFile()) {
-                    file.delete();
-                } else {
-                    IDSUtils.deleteFolder(file);
-                }
-                System.out.println("----fileDeleted");
-                if (selectedIndex > 0) {
-                    // selectedIndex--;
-                }
+
+            if (file.isFile()) {
+                file.delete();
+            } else {
+                IDSUtils.deleteFolder(file);
             }
+            System.out.println("----fileDeleted");
+            if (selectedIndex > 0) {
+                // selectedIndex--;
+            }
+
         } catch (Exception e) {
             System.err.println("Err deleting file : " + e.getMessage());
         }
@@ -1029,6 +1053,19 @@ public class ApplicationMainGUIController implements Initializable {
     public void refreshProject() {
         selectedIndex = 0;
         bindFileTree(CURRENT_PROJECT_ROOT);
+    }
+
+    public void addFileIntoTreeView(File file) {
+        TreeItem<File> tree = new TreeItem<>(file);
+        TreeItem c = (TreeItem) fileView.getSelectionModel().getSelectedItem();
+        c.getParent().getChildren().remove(c);
+        //fileView.getSelectionModel().getSelectedItem().getParent().getChildren().add(tree);
+        //c.getParent().getChildren().add(new SimpleFileTreeItem(file));
+    }
+
+    public void deleteFileFromTreeView() {
+        TreeItem c = (TreeItem) fileView.getSelectionModel().getSelectedItem();
+        c.getParent().getChildren().remove(c);
     }
 
     void refreshProjectWithIndex() {
@@ -1228,7 +1265,8 @@ public class ApplicationMainGUIController implements Initializable {
                          tab.setContent(IDSHtmlEditor.getHTMLEditor());
                          HTMLEditorInstances.getHTMLInstances().addHTMLEditor(IDSHtmlEditor);
                          */
-                        tab.setText(FilenameUtils.removeExtension(file.getName()));
+                        //tab.setText(FilenameUtils.removeExtension(file.getName()));
+                        tab.setText(file.getName());
                         openIDSNGFileInWebView(tab, file.getAbsolutePath());
                         //resetFileViews((((WebView) tab.getContent())).getEngine(), SHOWPROP);
                         //(tab, "C:/Users/Agnisys/Desktop/GUI demo/test/wysiwyg-editor-master/html/events/image_removed.html");
@@ -1616,6 +1654,7 @@ public class ApplicationMainGUIController implements Initializable {
 
     public void addNewFileInProjExp(File file) {
         bindFileTree(getCURRENT_PROJECT_ROOT());
+//        fileView.getSelectionModel().getSelectedItem().getChildren().add(new TreeItem<>(file));
         openTextInNewTab(file);
 //        IDSNextGen.APPLICATION_OBJECT.applicationProps.getOPENED_FILE_PATHS().add(file.getAbsolutePath());
     }
